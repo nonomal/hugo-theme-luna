@@ -191,7 +191,7 @@ params:
   # 自定义脚本
   # custom script
   customScript:
-    enable: true
+    enable: false
     file: "custom.js" # assets/custom.js
     pjax: true # Auto-reload in pjax mode
 

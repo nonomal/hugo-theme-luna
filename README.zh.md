@@ -66,6 +66,28 @@ npm install
 
 在主题 [`exampleSite`](https://github.com/Ice-Hazymoon/hugo-theme-luna/tree/main/exampleSite) 目录有一个 [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) 文件，将该文件复制到你的站点目录下并根据需求修改相关内容。
 
+### - 更新主题
+
+```bash
+git submodule update --remote
+```
+
+如果出现以下错误：
+
+```
+fatal: Needed a single revision
+Unable to find current origin/master revision in submodule path 'themes/hugo-theme-luna'
+```
+
+请在 `.gitmodules` 文件中添加 `branch = main`
+
+```
+[submodule "themes/hugo-theme-luna"]
+	branch = main
+	path = themes/hugo-theme-luna
+	url = https://github.com/Ice-Hazymoon/hugo-theme-luna
+```
+
 ### - 配置
 
 请参考 [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) 文件来配置你的博客

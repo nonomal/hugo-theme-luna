@@ -63,6 +63,28 @@ npm install
 
 There is a [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) file in the [`exampleSite`](https://github.com/Ice-Hazymoon/hugo-theme-luna/tree/main/exampleSite) directory, copy the file to your site directory and modify the contents.
 
+### - Update theme
+
+```bash
+git submodule update --remote
+```
+
+If the following error occurs.
+
+```
+fatal: Needed a single revision
+Unable to find current origin/master revision in submodule path 'themes/hugo-theme-luna'
+```
+
+Please add `branch = main` to the `.gitmodules` file
+
+```
+[submodule "themes/hugo-theme-luna"]
+	branch = main
+	path = themes/hugo-theme-luna
+	url = https://github.com/Ice-Hazymoon/hugo-theme-luna
+```
+
 ### - Configuration
 
 Please refer to the [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) file to configure your site
