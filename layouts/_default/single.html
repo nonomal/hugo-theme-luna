@@ -100,16 +100,20 @@
                             </span>
                         {{- end -}}
                     {{- end -}}
-                    <div
-                        class="inline-flex items-center mb-3 mr-4 sm:rounded-full">
-                        <i class="eva eva-flag-outline mr-1 "></i>
-                        <span>{{- T "post.readingTime" .ReadingTime}}</span>
-                    </div>
-                    <div
-                        class="inline-flex items-center mb-3 mr-4 sm:rounded-full">
-                        <i class="eva eva-bar-chart-outline mr-1 "></i>
-                        <span>{{- T "post.wordCount" .WordCount}}</span>
-                    </div>
+                    {{- if .Site.Params.readingTime -}}
+                        <div
+                            class="inline-flex items-center mb-3 mr-4 sm:rounded-full">
+                            <i class="eva eva-flag-outline mr-1 "></i>
+                            <span>{{- T "post.readingTime" .ReadingTime}}</span>
+                        </div>
+                    {{- end -}}
+                    {{- if .Site.Params.wordCount -}}
+                        <div
+                            class="inline-flex items-center mb-3 mr-4 sm:rounded-full">
+                            <i class="eva eva-bar-chart-outline mr-1 "></i>
+                            <span>{{- T "post.wordCount" .WordCount}}</span>
+                        </div>
+                    {{- end -}}
                 </div>
 
                 {{- if .Params.tags -}}

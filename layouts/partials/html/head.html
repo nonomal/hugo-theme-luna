@@ -62,7 +62,13 @@
         {{- end -}}
     {{- end -}}
     
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    {{- $favicon_icon := resources.Get "icon.png" -}}
+    {{- $favicon_icon = $favicon_icon.Resize "48x48 ico icon" -}}
+    {{- $favicon_icon = slice $favicon_icon | resources.Concat "favicon.ico" -}}
+    {{- $favicon_icon = print $cdn $favicon_icon.RelPermalink -}}
+    
+    <link rel="shortcut icon" href="{{- $favicon_icon -}}" type="image/x-icon">
 
     {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . }}
     <link rel="manifest" href="{{ $manifest.RelPermalink }}">

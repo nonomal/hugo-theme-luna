@@ -257,8 +257,17 @@ params:
   # enable google translate in footer
   googleTranslate: true
 
+  # 文章页显示最后修改时间
   # For outdated reminders
   lastmod: true
+
+  # 显示阅读时间
+  # show reading time
+  readingTime: true
+
+  # 显示文章字数
+  # show word count
+  wordCount: true
 
   # 开启文章内目录，可以在页面内单独设置
   # Show table of contents
