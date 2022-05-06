@@ -40,9 +40,6 @@
     <!-- main.js -->
     {{- partial "scripts/main-script" . -}}
 
-    <!-- custom_script.js -->
-    {{- partial "scripts/custom-script" . -}}
-
     <!-- pjax.js -->
     {{- if .Site.Params.pjax -}}
         {{- partial "scripts/pjax" . -}}
@@ -56,5 +53,15 @@
     <!-- google-translate.js -->
     {{- if .Site.Params.googleTranslate -}}
         {{- partial "scripts/google-translate" . -}}
+    {{- end -}}
+
+    <!-- custom footer -->
+    {{- partial "custom/footer" . -}}
+
+    <!-- custom script tag -->
+    {{- partial "custom/script" . -}}
+
+    {{- if and .Site.Params.customScript .Site.Params.customScript.enable -}}
+        {{- partial "scripts/custom" . -}}
     {{- end -}}
 </footer>

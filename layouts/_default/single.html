@@ -7,7 +7,7 @@
 {{- $Title := or $.Title (T "post.untitled") -}}
 <div class="h-full relative">
     <div class="h-full relative">
-        <div class="bg-white dark:bg-darkFg h-full overflow-auto page-view-article flex flex-col">
+        <div class="bg-white dark:bg-darkFg h-full page-view-article flex flex-col">
             <div class="relative">
                 {{- if or (.Site.Params.defaultFeaturedImage) (.Params.featured_image) -}}
                     {{- $featured_image := "" -}}

@@ -77,11 +77,11 @@ You can find all available icons at [Eva icons](https://akveo.github.io/eva-icon
 
 You can set the post type to `type: status` to post a status
 
-You can modify your website icons by adjusting the [assets/icon.png](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/icon.png) file
+You can create your website icons by adjusting the [assets/icon.png](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/assets/icon.png) file
 
 ### - Comment
 
-You can add the HTML part of the comment in [comment.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/77c6007410a97315448119c224412f3929716ed2/layouts/partials/comment.html) and then add the script part in [custom-script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/layouts/partials/scripts/custom-script.html) or [custom-script-pjax.js](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/custom-script-pjax.js) / [custom-script.js](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/custom-script.js)
+You can add the HTML part of the comment in [comment.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/77c6007410a97315448119c224412f3929716ed2/layouts/partials/comment.html) and then add the js and css file links in [custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/layouts/partials/custom/head.html)
 
 ### - Shortcodes
 
