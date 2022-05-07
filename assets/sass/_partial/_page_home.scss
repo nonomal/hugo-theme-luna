@@ -45,6 +45,9 @@
                 content: '';
                 @apply absolute left-0 top-0 w-full h-full bg-black transition duration-500 ease-[ease] opacity-0 pointer-events-none z-0;
             }
+            [data-lazyload]:not(.lazy-loaded) + noscript + .cover-shadow {
+                @apply opacity-0 #{!important};
+            }
         }
         .cover-shadow {
             filter: blur(18px) saturate(3.5) brightness(1) contrast(1.3);

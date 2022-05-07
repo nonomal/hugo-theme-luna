@@ -12,6 +12,7 @@
 	<figure>
 		<picture>
 			<img {{ if $lazyload }}data-{{ end }}src="{{- .Destination | relURL | safeURL -}}"
+			{{ if $lazyload }}src="/images/outload.svg"{{ end }}
 			{{- with $Alt -}}alt="{{- . -}}"{{- end -}}
 			{{ if $imageZoom }}data-zoomable{{ end }}
 			{{ if $lazyload }}data-lazyload{{ end }}
@@ -85,7 +86,7 @@
 				{{ if $lazyload }}data-{{ end }}srcset="{{- $Srcset -}}"
 				{{- with $Alt -}}alt="{{- . -}}"{{- end -}}
 				{{ if $imageZoom }}data-zoomable{{ end }}
-				{{ if $lazyload }}data-lazyload{{ end }}
+				{{ if $lazyload }}data-lazyload data-lazyload-blur{{ end }}
 			>
 		</picture>
 

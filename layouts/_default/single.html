@@ -58,7 +58,8 @@
                                 {{- with $width -}}width="{{- . -}}"{{- end -}}
                                 {{- with $height -}}height="{{- . -}}"{{- end -}}
                                 class="absolute h-full left-0 object-center object-cover top-0 w-full"
-                                {{ if $lazyload }}data-lazyload{{ end }}
+                                {{ if $lazyload }}data-lazyload data-lazyload-blur{{ end }}
+                                
                             >
                             <noscript>
                                 <img src="{{- $featured_image -}}"

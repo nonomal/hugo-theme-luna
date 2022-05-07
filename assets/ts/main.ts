@@ -63,20 +63,15 @@ class Luna {
                 }, 500);
             },
             callback_error: (el) => {
-                console.log(el);
                 const errorImageURL = window.__theme.cdn + '/images/error.svg';
                 el.setAttribute("src", errorImageURL);
                 el.setAttribute("srcset", errorImageURL);
-                el.removeAttribute('data-lazyload-blur');
             }
         })
     }
     async init() {
         // hugo encrypt
         this.hugoEncrypt();
-
-        // lazyload
-        this.updateLazyLoad();
 
         // katex
         this.initKatex();
@@ -104,7 +99,6 @@ class Luna {
     }
     renderPost() {
         if (window.rednerKatex) window.rednerKatex();
-        this.updateLazyLoad();
         this._LazyLoad.update();
         this.updateZoom();
         this.initGallery();
@@ -114,16 +108,7 @@ class Luna {
     switchLanguage(url) {
         window.location.href = url;
     }
-
-    // lazyload 插件
-    updateLazyLoad() {
-        const lazyload = Array.from(document.querySelectorAll('[data-lazyload]')) as HTMLElement[];
-        for (const item of lazyload) {
-            if (item.hasAttribute('src')) {
-                item.setAttribute('data-lazyload-blur', "")
-            }
-        }
-    }
+    
     // pjax 菜单激活插件
     initActiveMenu() {
         const activeMenu = document.querySelector('.link-exact-active')

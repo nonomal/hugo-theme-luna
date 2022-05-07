@@ -61,7 +61,7 @@
                         {{- with .Title -}}alt="{{- . -}}"{{- end -}}
                         {{- if not $featured_image_bg -}}style="background-color: #fff;"{{- end -}}
                         class="absolute h-full left-0 object-center object-cover top-0 transition duration-300 ease-[ease] w-full"
-                        {{ if $lazyload }}data-lazyload{{ end }}
+                        {{ if $lazyload }}data-lazyload data-lazyload-blur{{ end }}
                     >
                     <noscript>
                         <img src="{{- $featured_image -}}"
@@ -73,11 +73,11 @@
                             class="absolute h-full left-0 object-center object-cover top-0 transition duration-300 ease-[ease] w-full"
                         >
                     </noscript>
-                </picture>
     
-                <div class="-z-10 absolute bg-center bg-cover bg-no-repeat cover-shadow h-full hidden left-0 md:block top-0 transition duration-300 ease-[ease] w-full"
-                    style="background-image:url({{- or $featured_image_bg $featured_image -}})">
-                </div>
+                    <div class="-z-10 absolute bg-center bg-cover bg-no-repeat cover-shadow h-full hidden left-0 md:block top-0 transition duration-300 ease-[ease] w-full"
+                        style="background-image:url({{- or $featured_image_bg $featured_image -}})">
+                    </div>
+                </picture>
 
                 <div
                     class="article-title absolute hidden sm:flex h-4/5 bottom-0 items-end left-0 md:p-10 md:text-3xl p-5 text-2xl text-white dark:text-darkText w-full z-10">

@@ -69,7 +69,7 @@
                                                         {{- with $title -}}alt="{{- . -}}"{{- end -}}
                                                         class="object-cover w-full border border-x-0 border-gray-200 dark:border-darkBorder border-solid"
                                                         {{ if $imageZoom }}data-zoomable{{ end }}
-                                                        {{ if $lazyload }}data-lazyload{{ end }}
+                                                        {{ if $lazyload }}data-lazyload data-lazyload-blur{{ end }}
                                                     >
                                                     <noscript>
                                                         <img src="{{- print $cdn .RelPermalink -}}"
