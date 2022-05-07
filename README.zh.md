@@ -137,6 +137,8 @@ console.log('加密代码块测试');
 
 ## 注意
 
+如果你所在的国家或地区无法访问 Twitter 或 GitHub，请不要使用这两个模板文件，否则会出现错误。
+
 博客内图片均使用了 Hugo 的 [Image Processing](https://gohugo.io/content-management/image-processing/) 功能，自动裁剪成合适的大小来优化页面加载速度，首次生成可能较为耗费时间。
 
 搜索功能为了减少 json 文件的体积，去除了 shortcode 和代码块等内容，如果有需要，你可以在 [这里](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/layout/_default/search.json) 修改它
