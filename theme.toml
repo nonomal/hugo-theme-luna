@@ -7,22 +7,27 @@ demosite = "https://hugo-theme-luna.imiku.me"
 tags = [
   "blog",
   "responsive",
+  "minimal",
+  "personal",
+  "light",
   "dark",
+  "gallery",
+  "archive",
   "tailwind",
   "search",
-  "pwa",
-  "multilingual",
-  "lazyload"
+  "multilingual"
 ]
 features = [
   "blog",
   "responsive",
+  "minimal",
+  "personal",
+  "light",
   "dark",
+  "gallery",
   "tailwind",
   "search",
-  "pwa",
-  "multilingual",
-  "lazyload"
+  "multilingual"
 ]
 min_version = "0.97.0"
 

@@ -151,6 +151,9 @@ languages:
         rsshub: "https://rsshub.rssforever.com"
         id: "Ice_Hazymoon"
         imageProcessing: true
+      github:
+        id: "Ice-Hazymoon"
+        minStars: 10
       license:
         name: "署名 - 非商业性使用 - 禁止演绎 4.0"
         icon: "/images/Cc-by-nc-nd.svg"
@@ -179,6 +182,20 @@ params:
   # CDN 地址
   # CDN URL
   publicPath: ""
+
+  # Rss 配置
+  # RSS configuration
+  rss:
+    # 如果为 false，你必须设置 Output Formats，请查看：https://gohugo.io/templates/output-formats#customizing-output-formats
+    # If false, you must set Output Formats, see: https://gohugo.io/templates/output-formats#customizing-output-formats
+    enabled: true
+    # 是否输出全文
+    # Output full text
+    fullText: false
+
+  # 如果为 false，你必须设置 Output Formats，请查看：https://gohugo.io/templates/output-formats#customizing-output-formats
+  # If false, you must set Output Formats, see: https://gohugo.io/templates/output-formats#customizing-output-formats
+  sitemap: false
 
   # 网站主题颜色
   # Site theme colors

@@ -16,15 +16,21 @@
         </div>
 
         <div class=" flex items-center">
-            <span class="mx-2 opacity-50 md:block hidden"> | </span>
-            <a data-no-swup href="{{- "/index.xml" | absLangURL -}}" target="_blank" class=" hover:text-theme mr-2 ">
-                {{ $.Site.Data.luna.icon.rss | safeHTML }}
-                <span>RSS</span>
-            </a>
-            <a data-no-swup href="{{- "/sitemap.xml" | absLangURL -}}" target="_blank" class=" hover:text-theme mr-2 ">
-                {{ $.Site.Data.luna.icon.sitemap | safeHTML }}
-                <span>Sitemap</span>
-            </a>
+            {{- if or .Site.Params.rss.enabled .Site.Params.sitemap -}}
+                <span class="mx-2 opacity-50 md:block hidden"> | </span>
+            {{- end -}}
+            {{- if .Site.Params.rss.enabled -}}
+                <a data-no-swup href="{{- "/index.xml" | absLangURL -}}" target="_blank" class=" hover:text-theme mr-2 ">
+                    {{ $.Site.Data.luna.icon.rss | safeHTML }}
+                    <span>RSS</span>
+                </a>
+            {{- end -}}
+            {{- if .Site.Params.sitemap -}}
+                <a data-no-swup href="{{- "/sitemap.xml" | absLangURL -}}" target="_blank" class=" hover:text-theme mr-2 ">
+                    {{ $.Site.Data.luna.icon.sitemap | safeHTML }}
+                    <span>Sitemap</span>
+                </a>
+            {{- end -}}
             {{- if .Site.Params.googleTranslate -}}<div id="google_translate_element" class=" rounded border dark:border-darkBorder overflow-hidden"></div>{{- end -}}
         </div>
         {{- if .Site.Params.runTime.enable -}}

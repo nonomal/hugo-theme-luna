@@ -71,16 +71,7 @@ module.exports = {
         tailwindcss: {
             config: path.join(__dirname, '/tailwind.config.js'),
         },
-        'postcss-pxtorem': {
-            rootValue: 16,
-            propList: ['*'],
-            selectorBlackList: ['html']
-        },
         'postcss-easing-gradients': {},
-        'postcss-font-display': {
-            display: 'swap',
-            replace: false
-        },
         'postcss-url': {
             url: 'copy',
             useHash: true,

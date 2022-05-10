@@ -119,6 +119,15 @@ input[type="checkbox"] {
         margin: 0;
         vertical-align: -0.1em;
     }
+    figure {
+        @apply mb-4;
+        img {
+            @apply mb-0 #{!important};
+        }
+        figcaption {
+            @apply mt-2 leading-7;
+        }
+    }
     blockquote:not(.quote) {
         background-color: #f5f7f9;
         @apply border-l-4 border-theme dark:bg-darkBgAccent my-4 p-5 ml-0 rounded-md;
@@ -132,7 +141,7 @@ input[type="checkbox"] {
             @apply border border-gray-300 dark:border-gray-600;
         }
     }
-    details {
+    details.accordion {
         summary::before {
             content: "\ea70";
             font-family: Eva-Icons;
@@ -199,13 +208,13 @@ input[type="checkbox"] {
     }
 
     .highlight {
-        @apply my-4 rounded overflow-hidden;
+        @apply my-4 rounded overflow-hidden dark:border dark:border-darkBorder;
         pre {
-            @apply my-0 rounded-none;
+            @apply my-0 rounded-none dark:bg-darkBgAccent #{!important};
         }
         header {
             color: #8b949e;
-            @apply w-full bg-gray-800 p-2 flex justify-between items-center border-b border-gray-700 text-sm dark:text-darkTextPlaceholder;
+            @apply w-full bg-gray-800 dark:bg-darkBgAccent p-2 flex justify-between items-center border-b border-gray-700 dark:border-darkBorder text-sm dark:text-darkTextPlaceholder;
             i {
                 @apply cursor-pointer;
             }
@@ -265,7 +274,7 @@ input[type="checkbox"] {
     }
 
     h2 {
-        @apply text-3xl;
+        @apply text-3xl border-b dark:border-darkBorder pb-2;
     }
 
     h3 {
@@ -290,12 +299,12 @@ input[type="checkbox"] {
         @apply font-bold;
         &::before {
             content: '#';
-            @apply w-5 text-gray-500 mr-2 italic font-bold;
+            @apply w-5 text-gray-400 mr-2 italic font-bold;
         }
     }
 
     hr {
-        @apply my-16 border-gray-300 dark:border-gray-600;
+        @apply my-16 w-3/4 mx-auto dark:border-darkBorder;
     }
 
     table {
