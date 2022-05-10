@@ -34,26 +34,32 @@
         text-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.2);
     }
     .toc {
-        @apply px-5 md:px-10 py-5 border-b border-gray-300 dark:border-darkBorder;
         #TableOfContents {
             @apply text-sm;
-            &>ul>li>a {
-                @apply font-bold text-base;
-            }
             ul {
-                @apply pl-4;
                 li {
+                    @apply leading-6;
                     margin-top: 0.5rem;
+                    &:hover {
+                        &::before {
+                            @apply text-text;
+                        }
+                    }
                     a {
-                        @apply hover:text-theme;
+                        @apply hover:text-theme 2xl:hover:text-text align-middle;
+                        &.toc-active {
+                            @apply text-theme hover:text-theme;
+                        }
                     }
                 }
                 ul {
+                    @apply pl-4;
                     // @apply border-l border-gray-300 dark:border-gray-600;
                     li {
                         &::before {
-                            content: "· ";
-                            @apply mr-1;
+                            content: "\ea70";
+                            font-family: Eva-Icons;
+                            @apply mr-1 text-base align-middle text-gray-400 dark:text-gray-500;
                         }
                     }
                 }

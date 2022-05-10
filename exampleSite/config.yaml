@@ -191,11 +191,11 @@ params:
     enabled: true
     # 是否输出全文
     # Output full text
-    fullText: false
+    fullText: true
 
   # 如果为 false，你必须设置 Output Formats，请查看：https://gohugo.io/templates/output-formats#customizing-output-formats
   # If false, you must set Output Formats, see: https://gohugo.io/templates/output-formats#customizing-output-formats
-  sitemap: false
+  sitemap: true
 
   # 网站主题颜色
   # Site theme colors
@@ -204,6 +204,7 @@ params:
   # 网站字体
   # Site font
   font: '"Times New Roman", Times, "Heti Song", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  # 'Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'
 
   # 自定义脚本
   # custom script

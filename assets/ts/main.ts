@@ -3,6 +3,7 @@ import jump from "modules/jump.js";
 import mediumZoom from "modules/medium-zoom";
 import LazyLoad from "modules/lazyload";
 import ClipboardJS from "modules/clipboard";
+import renderToc from "./toc";
 
 declare global {
     interface Window {
@@ -96,6 +97,8 @@ class Luna {
 
         // 夜间模式
         this.initNightMode();
+
+        renderToc();
     }
     renderPost() {
         if (window.rednerKatex) window.rednerKatex();
@@ -103,6 +106,7 @@ class Luna {
         this.updateZoom();
         this.initGallery();
         this.initCodeBlockCopy();
+        renderToc();
     }
 
     switchLanguage(url) {
