@@ -17,7 +17,8 @@
 ## 特性
 
 - 使用 [Tailwindcss](https://tailwindcss.com) 构建，界面美观，SEO友好
-- 自定义主题颜色
+- 自定义主题颜色和字体
+- 轮播图
 - 丰富的[短代码](https://hugo-theme-luna.imiku.me/zh-cn/2022/05/02/shortcodes.html/)支持
 - 夜间模式
 - 画廊模式
@@ -202,6 +203,8 @@ hugo server -s ./exampleSite -D --themesDir "../.."
 - [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)
 - [hugo-encrypt](https://github.com/Izumiko/hugo-encrypt)
 - [shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Some shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Carousel component](https://codepen.io/onediv/details/VaQbrq)
 
 ## License
 

@@ -17,7 +17,8 @@
 ## Introduction
 
 - Using [Tailwindcss](https://tailwindcss.com)
-- Custom Themes
+- Custom Themes and Fonts
+- Carousel
 - Many [shortcodes](https://hugo-theme-luna.imiku.me/2022/05/02/shortcodes.html/)
 - Dark mode
 - Image gallery
@@ -196,7 +197,8 @@ hugo server -s ./exampleSite -D --themesDir "../.."
 - [hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even)
 - [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)
 - [hugo-encrypt](https://github.com/Izumiko/hugo-encrypt)
-- [shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Some shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Carousel component](https://codepen.io/onediv/details/VaQbrq)
 
 ## License
 
