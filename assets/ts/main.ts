@@ -89,6 +89,9 @@ class Luna {
         // 代码高亮插件
         this.initCodeBlockCopy();
 
+        // 复制插件
+        this.initClipboard();
+
         // 底部計時器
         this.initFooterTime();
 
@@ -106,6 +109,7 @@ class Luna {
         this.updateZoom();
         this.initGallery();
         this.initCodeBlockCopy();
+        this.initClipboard();
         renderToc();
     }
 
@@ -263,12 +267,16 @@ class Luna {
             const lang = codeEl.getAttribute('data-lang');
             const code = el.querySelector('table td:nth-child(2) pre').textContent;
     
-            header.innerHTML = `<span>${lang}</span><i title="${window.__theme.i18n.copyCode}" class="eva eva-clipboard-outline"></i>`
+            header.innerHTML = `<div><span></span> <span></span> <span></span> ${lang}</div><i title="${window.__theme.i18n.copyCode}" class="eva eva-clipboard-outline"></i>`
             const btn = header.querySelector('i.eva');
             el.prepend(header);
             btn.setAttribute('data-clipboard-text', code);
         }
+    }
 
+    // clipboard
+    initClipboard() {
+        if (!document.querySelector('[data-clipboard-text]')) return false;
         if (this.clipboard) {
             this.clipboard.destroy();
         }

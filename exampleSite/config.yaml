@@ -158,6 +158,9 @@ languages:
         name: "署名 - 非商业性使用 - 禁止演绎 4.0"
         icon: "/images/Cc-by-nc-nd.svg"
         url: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"
+      notification:
+        enabled: true
+        file: "README.zh.md"
   en-us:
     contentDir: content/en-us
     title: Ice-Hazymoon's Blog
@@ -182,6 +185,12 @@ params:
   # CDN 地址
   # CDN URL
   publicPath: ""
+
+  # 在首页顶部创建一个通知部分
+  # Create a notification section at the top of the home page
+  notification:
+    enabled: true
+    file: "README.md" # assets/README.md
 
   # Rss 配置
   # RSS configuration
@@ -292,7 +301,7 @@ params:
 
   # 显示文章字数
   # show word count
-  wordCount: true
+  wordCount: false
 
   # 开启文章内目录，可以在页面内单独设置
   # Show table of contents

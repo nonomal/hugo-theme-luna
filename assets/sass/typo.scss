@@ -210,13 +210,28 @@ input[type="checkbox"] {
     .highlight {
         @apply my-4 rounded overflow-hidden dark:border dark:border-darkBorder;
         pre {
-            @apply my-0 rounded-none dark:bg-darkBgAccent #{!important};
+            @apply my-0 rounded-none bg-gray-800 dark:bg-transparent #{!important};
         }
         header {
             color: #8b949e;
-            @apply w-full bg-gray-800 dark:bg-darkBgAccent p-2 flex justify-between items-center border-b border-gray-700 dark:border-darkBorder text-sm dark:text-darkTextPlaceholder;
+            @apply w-full bg-gray-800 dark:bg-transparent pt-2 px-4 flex justify-between items-center dark:border-b dark:border-darkBorder text-base dark:text-darkTextPlaceholder;
             i {
                 @apply cursor-pointer;
+            }
+            & + div {
+                @apply bg-gray-800 dark:bg-transparent #{!important};
+            }
+            span {
+                @apply w-2.5 h-2.5 rounded-full mr-0.5 inline-block;
+                &:nth-child(1) {
+                    @apply bg-red-400 ;
+                }
+                &:nth-child(2) {
+                    @apply bg-yellow-400 ;
+                }
+                &:nth-child(3) {
+                    @apply bg-green-400 mr-4;
+                }
             }
         }
         table {
@@ -240,6 +255,9 @@ input[type="checkbox"] {
                     @apply px-2;
                 }
             }
+        }
+        code {
+            @apply bg-transparent;
         }
     }
 

@@ -35,7 +35,7 @@
         }
         .slider-arrow-nav{
             .nav-arrow {
-                @apply transition ease-in-out w-12 h-12 text-5xl text-white hover:text-theme absolute top-1/2 transform -translate-y-1/2 cursor-pointer;
+                @apply transition ease-in-out w-12 h-12 text-5xl text-white absolute top-1/2 transform -translate-y-1/2 cursor-pointer;
                 z-index: 2;
                 font-family: Eva-Icons;
             }
@@ -59,12 +59,11 @@
         .slide {
             @apply absolute top-0 left-0 w-full h-full opacity-0;
             z-index: 1;
-            //transform: translateX(-100%);
             transition: 1000ms cubic-bezier(.68,-0.57,.33,1.67) opacity;
             img{
                 @apply w-full h-full object-contain border-none m-0;
                 &:nth-child(2) {
-                    @apply w-full h-full object-cover left-0 top-0 absolute blur-md transform scale-105;
+                    @apply w-full h-full object-cover left-0 top-0 absolute blur-lg transform scale-105;
                     z-index: -1;
                 }
             }

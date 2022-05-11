@@ -6,7 +6,7 @@
 {{- end -}}
 
 {{- if eq .Type "posts" -}}
-    <article class="article relative group bg-white dark:bg-darkBgAccent border mb-10 md:border-none dark:border-darkBorder md:mb-16 overflow-hidden rounded transition duration-300 ease-[ease]">
+    <article class="article relative group bg-white dark:bg-darkBgAccent border sm:border-transparent dark:border-darkBorder sm:hover:shadow-none sm:hover:border-gray-200 mb-10 md:mb-16 overflow-hidden rounded transition duration-300 ease-[ease]">
         {{- $hasCover := or (.Site.Params.defaultFeaturedImage) (.Params.featured_image) -}}
         {{- if $hasCover -}}
             {{- $featured_image := "" -}}
@@ -89,7 +89,7 @@
             </a>
             
             <div class="sm:hidden block px-5 border-t dark:border-darkBorder pt-5">
-                <a href="{{- .RelPermalink -}}" class="font-bold line-clamp-2 md:line-clamp-3 text-2xl">{{- .Title -}}</a>
+                <a href="{{- .RelPermalink -}}" class="font-bold line-clamp-2 md:line-clamp-3 text-2xl group-hover:text-theme">{{- .Title -}}</a>
                 {{- with $Summary -}}<div class="line-clamp-2 mt-4 mb-1" title="{{- . -}} ...">{{ . }} <span class=" text-gray-400"></span></div>{{- end -}}
             </div>
         {{- else -}}
@@ -133,21 +133,19 @@
                 {{- end -}}
             </div>
             <div class="flex items-center sm:hidden text-gray-400 dark:text-darkText ">
-                <i class="eva eva-bar-chart-outline mr-1"></i>
-                <span>{{- T "post.wordCount" .WordCount -}}</span>
-                <!-- {{- if .Params.tags -}}
+                {{- if .Params.tags -}}
                     {{- range .Params.tags -}}
                     <a href="{{- "/tags/" | relLangURL -}}{{- . | urlize -}}" title="{{- . -}}" class="mx-1 flex items-center text-gray-600 text-opacity-70 dark:text-darkText hover:text-opacity-100">
                         <i class="eva eva-hash-outline mr-0.5"></i>
                         <span>{{- . -}}</span>
                     </a>
                     {{- end -}}
-                {{- end -}} -->
+                {{- end -}}
             </div>
         </div>
     </article>
 {{- else -}}
-    <article class="article bg-white dark:bg-darkBgAccent border mb-10 md:border-none dark:border-darkBorder md:mb-16 overflow-hidden rounded transition duration-300 ease-[ease]">
+    <article class="article relative group bg-white dark:bg-darkBgAccent border sm:border-transparent dark:border-darkBorder sm:hover:shadow-none sm:hover:border-gray-200 mb-10 md:mb-16 overflow-hidden rounded transition duration-300 ease-[ease]">
         <a href="{{- .RelPermalink -}}" class="flex p-5 relative">
             <div class="flex items-center mr-6 opacity-50 dark:opacity-80 text-5xl text-theme">
                 <i class="eva eva-edit-2-outline"></i>

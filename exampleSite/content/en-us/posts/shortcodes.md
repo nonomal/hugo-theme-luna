@@ -12,6 +12,14 @@ categories:
   - Luna
 ---
 
+## Abbr
+
+```markdown
+{{</* abbr "HUST" "Huazhong University of Science and Technology" */>}}
+```
+
+{{< abbr "HUST" "Huazhong University of Science and Technology" >}}
+
 ## Text layout
 
 ```markdown
