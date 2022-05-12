@@ -1,10 +1,8 @@
 {{- define "main" -}}
+
+{{- $public_cdn := $.Scratch.Get "public_cdn" -}}
 {{- $twitterConfig := .Site.Params.twitter -}}
 {{- $twitterData := getJSON (print "https://api.rss2json.com/v1/api.json?rss_url=" $twitterConfig.rsshub "/twitter/user/" $twitterConfig.id) -}}
-{{- $cdn := "" -}}
-{{- if and .Site.Params.publicPath (not .Site.IsServer) -}}
-{{- $cdn = .Site.Params.publicPath -}}
-{{- end -}}
 
 {{- $lazyload := .Site.Params.lazyload -}}
 {{- $imageZoom := .Page.Site.Params.imageZoom -}}
@@ -57,14 +55,14 @@
                                         {{- $pic_placeholder := "" -}}
                                         {{- $pic_webp := "" -}}
                                         {{- if $twitterConfig.imageProcessing -}}
-                                            {{- $pic_placeholder = print $cdn ((.Resize "50x").Filter (images.GaussianBlur 2)).RelPermalink -}}
-                                            {{- $pic_webp = print $cdn (.Resize "1200x webp").RelPermalink -}}
+                                            {{- $pic_placeholder = print $public_cdn ((.Resize "50x").Filter (images.GaussianBlur 2)).RelPermalink -}}
+                                            {{- $pic_webp = print $public_cdn (.Resize "1200x webp").RelPermalink -}}
                                         {{- end -}}
                                         <div class="xl:w-1/4 lg:w-1/3 w-1/2 relative inline-block pr-4 pb-4">
                                             <div class=" relative img-box border dark:border-darkBorder rounded overflow-hidden">
                                                 <picture>
                                                     {{- with $pic_webp -}}<source {{ if $lazyload }}data-{{ end }}srcset="{{- . -}}" type="image/webp">{{- end -}}
-                                                    <img {{ if $lazyload }}data-{{ end }}src="{{- print $cdn .RelPermalink -}}"
+                                                    <img {{ if $lazyload }}data-{{ end }}src="{{- print $public_cdn .RelPermalink -}}"
                                                         {{ if $lazyload }}src="{{- $pic_placeholder -}}"{{ end }}
                                                         {{- with $title -}}alt="{{- . -}}"{{- end -}}
                                                         class="object-cover w-full border border-x-0 border-gray-200 dark:border-darkBorder border-solid"
@@ -72,7 +70,7 @@
                                                         {{ if $lazyload }}data-lazyload data-lazyload-blur{{ end }}
                                                     >
                                                     <noscript>
-                                                        <img src="{{- print $cdn .RelPermalink -}}"
+                                                        <img src="{{- print $public_cdn .RelPermalink -}}"
                                                         {{- with $title -}}alt="{{- . -}}"{{- end -}}
                                                         class="object-cover w-full border border-x-0 border-gray-200 dark:border-darkBorder border-solid"
                                                         >
@@ -91,7 +89,7 @@
                                         {{ warnf "%s" . }}
                                     {{ else }}
                                         <div class="xl:w-2/3 w-full relative inline-block pr-4 pb-4">
-                                            <video src="{{- print $cdn .RelPermalink -}}" class="rounded max-w-full border border-gray-200 dark:border-darkBorder cursor-pointer max-h-80" controls="controls" alt="{{- $title -}}"></video>
+                                            <video src="{{- print $public_cdn .RelPermalink -}}" class="rounded max-w-full border border-gray-200 dark:border-darkBorder cursor-pointer max-h-80" controls="controls" alt="{{- $title -}}"></video>
                                         </div>
                                     {{ end }}
                                 {{- end -}}

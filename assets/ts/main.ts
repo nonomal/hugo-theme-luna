@@ -24,6 +24,10 @@ declare global {
                 wrongPasswordText: string,
                 userStorage: any,
             },
+            assets: {
+                error_svg: string,
+                search_svg: string,
+            },
             i18n: {
                 copySuccess: string,
                 copyFailed: string,
@@ -64,9 +68,13 @@ class Luna {
                 }, 500);
             },
             callback_error: (el) => {
-                const errorImageURL = window.__theme.cdn + '/images/error.svg';
+                const errorImageURL = window.__theme.assets.error_svg;
                 el.setAttribute("src", errorImageURL);
                 el.setAttribute("srcset", errorImageURL);
+                if (el.previousSibling.tagName === 'SOURCE') {
+                    el.previousSibling.setAttribute("src", errorImageURL);
+                    el.previousSibling.setAttribute("srcset", errorImageURL);
+                }
             }
         })
     }
@@ -408,7 +416,7 @@ class Luna {
     initKatex() {
         if (params.katex) {
             const script = document.createElement('script');
-            script.src = `${window.__theme.cdn}${params.katex}`;
+            script.src = params.katex;
             document.body.appendChild(script);
             script.addEventListener('load', () => {
                 window.rednerKatex();

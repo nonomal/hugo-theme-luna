@@ -9,7 +9,7 @@
                 <a title="{{ T (print "navbar." .Identifier) }}" data-active-link="{{ $url }}" href="{{ $url }}" class="{{ if eq $RelPermalink ($url) }}link-exact-active{{ end }} cursor-pointer relative text-gray-700 transition duration-300 ease-[ease] flex flex-col items-center">
                     <i class="{{ .Params.icon }} flex justify-center items-center h-8 text-3xl leading-none text-gray-500 dark:text-darkTextPlaceholder transition duration-300 ease-[ease] w-8"></i>
                     <span class="block md:hidden mt-1 sm:text-sm text-xs text-gray-400 dark:text-darkText">{{ T (print "navbar." .Identifier) }}</span>
-                </a> 
+                </a>
             {{- end }}
         </div>
     </nav>

@@ -239,6 +239,10 @@ The paella dish I rate {{< rating 10 6 >}}
 
 ```markdown
 {{</* carousel "https://unsplash.it/1920/1080/?random=1" "https://unsplash.it/1920/1080/?random=2" "https://unsplash.it/1920/1080/?random=3" "https://unsplash.it/1920/1080/?random=4" */>}}
+
+{{</* carousel "4.jpg" "7.jpg" "9.jpg" */>}}
 ```
 
 {{< carousel "https://unsplash.it/1920/1080/?random=1" "https://unsplash.it/1920/1080/?random=2" "https://unsplash.it/1920/1080/?random=3" "https://unsplash.it/1920/1080/?random=4" >}}
+
+{{< carousel "4.jpg" "7.jpg" "9.jpg" >}}

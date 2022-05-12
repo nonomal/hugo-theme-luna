@@ -7,6 +7,6 @@
 </div>
 <div class="flex items-center text-sm xl:hidden">
    <a href="{{- $license.url -}}" target="_blank" rel="noopener noreferrer" class="text-theme">
-       <img src="{{- $license.icon -}}" alt="{{- $license.name -}}" title="{{- $license.name -}}" class="w-24">
+       <img src="{{- (resources.Get $license.icon).RelPermalink -}}" alt="{{- $license.name -}}" title="{{- $license.name -}}" class="w-24">
    </a>
 </div>

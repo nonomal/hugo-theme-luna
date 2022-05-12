@@ -1,8 +1,4 @@
-{{- $cdn := "" -}}
-{{- if and .Site.Params.publicPath (not .Site.IsServer) -}}
-{{- $cdn = .Site.Params.publicPath -}}
-{{- end -}}
-
+{{- $public_cdn := $.Scratch.Get "public_cdn" -}}
 {{- $title := .Site.Title -}}
 {{- $image := .Site.Params.logo.url | absURL -}}
 {{- if .Site.Params.featured_image -}}
@@ -30,7 +26,7 @@
         <link rel="stylesheet" href="{{- $styles.RelPermalink -}}"/>
     {{- else -}}
         {{ $styles := $styles | fingerprint | resources.PostProcess }}
-        <link rel="stylesheet" href="{{- print $cdn $styles.RelPermalink -}}" integrity="{{ $styles.Data.Integrity }}"/>
+        <link rel="stylesheet" href="{{- print $public_cdn $styles.RelPermalink -}}" integrity="{{ $styles.Data.Integrity }}"/>
     {{- end -}}
 
     <meta property="og:site_name" content="{{- $title -}}" />
@@ -66,14 +62,14 @@
     {{- $favicon_icon := resources.Get "icon.png" -}}
     {{- $favicon_icon = $favicon_icon.Resize "48x48 ico icon" -}}
     {{- $favicon_icon = slice $favicon_icon | resources.Concat "favicon.ico" -}}
-    {{- $favicon_icon = print $cdn $favicon_icon.RelPermalink -}}
+    {{- $favicon_icon = print $public_cdn $favicon_icon.RelPermalink -}}
     
     <link rel="shortcut icon" href="{{- $favicon_icon -}}" type="image/x-icon">
 
     {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . }}
     <link rel="manifest" href="{{ $manifest.RelPermalink }}">
 
-    {{- $icon := print $cdn (resources.Get "icon.png").RelPermalink -}}
+    {{- $icon := print $public_cdn (resources.Get "icon.png").RelPermalink -}}
     <link href="{{- $icon -}}" rel="shortcut icon" />
     <link href="{{- $icon -}}" rel="Bookmark" />
     <link rel="apple-touch-icon" href="{{- $icon -}}"/>

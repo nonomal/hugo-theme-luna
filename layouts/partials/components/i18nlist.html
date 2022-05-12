@@ -10,7 +10,8 @@
             {{- range $.Translations -}}
                 <li class="mb-1.5 last:mb-0 cursor-pointer">
                     <a data-no-swup href="{{ .Permalink }}" title="{{- T "switchLang" -}}{{ .Language.LanguageName }}">
-                        <img class="w-6 cursor-pointer rounded-sm" src="{{ .Site.Params.icon }}" alt="{{ .Lang }}">
+                        {{- $flag := resources.Get .Site.Params.icon -}}
+                        <img class="w-6 cursor-pointer rounded-sm" src="{{ print ($.Scratch.Get "public_cdn") $flag.RelPermalink }}" alt="{{ .Lang }}">
                     </a>
                 </li>
             {{- end -}}

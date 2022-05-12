@@ -1,13 +1,9 @@
 {{- define "main" -}}
-{{- $cdn := "" -}}
-{{- if and .Site.Params.publicPath (not .Site.IsServer) -}}
-{{- $cdn = .Site.Params.publicPath -}}
-{{- end -}}
 
 <div class="flex justify-center items-center px-8 absolute h-full">
     <div class=" w-5/6 md:w-4/6 text-center">
         <img
-            src="{{- $cdn -}}/images/error.svg"
+            src="{{- print ($.Scratch.Get "public_cdn") ($.Scratch.Get "svg_error") -}}"
             alt="404"
             class="max-w-full max-h-full pointer-events-none"
         />

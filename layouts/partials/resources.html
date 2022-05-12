@@ -1,7 +1,8 @@
-{{- $svg_files := slice "images/error.svg" "images/search.svg" "images/outload.svg" -}}
+{{- $svg_files := dict "error" "images/error.svg" "search" "images/search.svg" "outload" "images/outload.svg" -}}
 {{- $theme := .Site.Params.themeColor -}}
+{{- $public_cdn := $.Scratch.Get "public_cdn" -}}
 
-{{- range $path := $svg_files -}}
+{{- range $filename, $path := $svg_files -}}
     {{- $svg := (resources.Get $path).Content | string | replaceRE "{themeColor}" $theme | resources.FromString $path -}}
-    <span class="hidden" data-svg="{{- $svg.RelPermalink -}}"></span>
+    {{- $.Scratch.Set (print "svg_" $filename) (print $public_cdn $svg.RelPermalink) -}}
 {{- end -}}

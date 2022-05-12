@@ -1,9 +1,5 @@
 {{- $Summary := .Summary | plainify -}}
-
-{{- $cdn := "" -}}
-{{- if and .Site.Params.publicPath (not .Site.IsServer) -}}
-{{- $cdn = .Site.Params.publicPath -}}
-{{- end -}}
+{{- $public_cdn := $.Scratch.Get "public_cdn" -}}
 
 {{- if eq .Type "posts" -}}
     <article class="article relative group bg-white dark:bg-darkBgAccent border sm:border-transparent dark:border-darkBorder sm:hover:shadow-none sm:hover:border-gray-200 mb-10 md:mb-16 overflow-hidden rounded transition duration-300 ease-[ease]">
@@ -23,7 +19,7 @@
             {{- $featured_image_url := or .Params.featured_image .Site.Params.defaultFeaturedImage -}}
     
             {{- if (urls.Parse ($featured_image_url | safeURL)).Scheme -}}
-                {{- $featured_image = $featured_image_url | relURL | safeURL -}}
+                {{- $featured_image = $featured_image_url | safeURL -}}
             {{- else -}}
                 {{- if .Params.featured_image -}}
                     {{- $featured_image = .Resources.GetMatch .Params.featured_image -}}
@@ -35,17 +31,17 @@
                 {{- $height = $featured_image.Height -}}
 
                 {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
-                    {{- $featured_image_small = print $cdn ($featured_image.Resize "800x").RelPermalink -}}
-                    {{- $featured_image_big = print $cdn ($featured_image.Resize "1200x").RelPermalink -}}
-                    {{- $featured_image_bg = print $cdn (($featured_image.Resize "50x").Filter (images.GaussianBlur 2 )).RelPermalink -}}
+                    {{- $featured_image_small = print $public_cdn ($featured_image.Resize "800x").RelPermalink -}}
+                    {{- $featured_image_big = print $public_cdn ($featured_image.Resize "1200x").RelPermalink -}}
+                    {{- $featured_image_bg = print $public_cdn (($featured_image.Resize "50x").Filter (images.GaussianBlur 2 )).RelPermalink -}}
                     {{- $srcset = printf "%s 800w, %s 1200w" $featured_image_small $featured_image_big -}}
             
-                    {{- $featured_image_small_webp = print $cdn ($featured_image.Resize "800x webp").RelPermalink -}}
-                    {{- $featured_image_big_webp = print $cdn ($featured_image.Resize "1200x webp").RelPermalink -}}
+                    {{- $featured_image_small_webp = print $public_cdn ($featured_image.Resize "800x webp").RelPermalink -}}
+                    {{- $featured_image_big_webp = print $public_cdn ($featured_image.Resize "1200x webp").RelPermalink -}}
                     {{- $srcset_webp = printf "%s 800w, %s 1200w" $featured_image_small_webp $featured_image_big_webp -}}
                 {{- end -}}
         
-                {{- $featured_image = print $cdn $featured_image.RelPermalink -}}
+                {{- $featured_image = print $public_cdn $featured_image.RelPermalink -}}
 
             {{- end}}
             

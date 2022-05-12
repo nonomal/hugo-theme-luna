@@ -3,7 +3,7 @@
 <div class="carousel">
     <div class='slider-wrapper'>
         {{- range $i, $img := .Params -}}
-            <input id='{{- print $id $i -}}' {{- if eq ($i | string) "0" -}}checked="checked"{{- end -}} name='slides' type='radio'>
+            <input id='{{- print $id $i -}}' {{- if eq ($i | string) "0" -}}checked="checked"{{- end -}} name='{{ print $id "slides" }}' type='radio'>
         {{- end -}}
     
         <div class='slider-arrow-nav'>

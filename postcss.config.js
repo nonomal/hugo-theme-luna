@@ -2,7 +2,7 @@ const path = require('path');
 const replaceVal = {};
 
 replaceVal['themes/hugo-theme-luna/'] = '';
-replaceVal['static/'] = '/';
+replaceVal['static/'] = '../';
 
 const isDev = process.env.HUGO_ENVIRONMENT !== 'production';
 

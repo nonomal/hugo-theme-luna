@@ -1,18 +1,13 @@
-{{- $cdn := "" -}}
-{{- if and .Page.Site.Params.publicPath (not .Page.Site.IsServer) -}}
-{{- $cdn := .Page.Site.Params.publicPath -}}
-{{- end -}}
-
 {{- $lazyload := .Page.Site.Params.lazyload -}}
 {{- $imageZoom := .Page.Site.Params.imageZoom -}}
-
+{{- $public_cdn := $.Page.Scratch.Get "public_cdn" -}}
 
 {{- $Alt := .PlainText | safeHTML -}}
 {{- if (urls.Parse (.Destination | safeURL)).Scheme -}}
 	<figure>
 		<picture>
-			<img {{ if $lazyload }}data-{{ end }}src="{{- .Destination | relURL | safeURL -}}"
-			{{ if $lazyload }}src="/images/outload.svg"{{ end }}
+			<img {{ if $lazyload }}data-{{ end }}src="{{- .Destination | safeURL -}}"
+			{{ if $lazyload }}src="{{- print $public_cdn ("images/outload.svg" | relURL) -}}"{{ end }}
 			{{- with $Alt -}}alt="{{- . -}}"{{- end -}}
 			{{ if $imageZoom }}data-zoomable{{ end }}
 			{{ if $lazyload }}data-lazyload{{ end }}
@@ -57,9 +52,9 @@
 
 				{{- $Placeholder = ($Image.Resize "50x").Filter (images.GaussianBlur 2) -}}
 
-				{{- $Srcset = printf `%s 640w, %s 1080w` (print $cdn $small.RelPermalink) (print $cdn $big.RelPermalink) -}}
-				{{- $Srcset_Webp = printf `%s 640w, %s 1080w` (print $cdn $small_webp.RelPermalink) (print $cdn $big_webp.RelPermalink) -}}
-				{{- $Placeholder = print $cdn $Placeholder.RelPermalink -}}
+				{{- $Srcset = printf `%s 640w, %s 1080w` (print $public_cdn $small.RelPermalink) (print $public_cdn $big.RelPermalink) -}}
+				{{- $Srcset_Webp = printf `%s 640w, %s 1080w` (print $public_cdn $small_webp.RelPermalink) (print $public_cdn $big_webp.RelPermalink) -}}
+				{{- $Placeholder = print $public_cdn $Placeholder.RelPermalink -}}
 			{{- end -}}
 		{{- end -}}
 	{{- else -}}
@@ -68,7 +63,7 @@
 		{{ end }}
 	{{- end -}}
 
-	{{- $Permalink = print $cdn $Permalink -}}
+	{{- $Permalink = print $public_cdn $Permalink -}}
 
 	<figure 
 		{{ if $galleryImage }}

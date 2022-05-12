@@ -2,21 +2,21 @@ import * as params from '@params';
 const CACHE_NAME = 'luna_sw';
 const OFFLINE_URL = '/offline.html';
 const OFFLINE_IMAGE = '/offline.jpg';
-const CDN = params.cdn;
+const ERROR_IMAGE = '/images/error.svg';
+const baseURL = params.url;
+
+console.log('load sw.js');
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            cache.add(new Request(OFFLINE_URL, {
+            cache.add(new Request(baseURL + OFFLINE_URL, {
                 cache: "reload"
             }))
-            cache.add(new Request(OFFLINE_IMAGE, {
+            cache.add(new Request(baseURL + OFFLINE_IMAGE, {
                 cache: "reload"
             }))
-            cache.add(new Request(CDN + '/images/search.svg', {
-                cache: "reload"
-            }))
-            cache.add(new Request(CDN + '/images/error.svg', {
+            cache.add(new Request(baseURL + ERROR_IMAGE, {
                 cache: "reload"
             }))
         })

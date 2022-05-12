@@ -1,9 +1,6 @@
 {{- define "main" -}}
-{{- $cdn := "" -}}
-{{- if and .Site.Params.publicPath (not .Site.IsServer) -}}
-{{- $cdn = .Site.Params.publicPath -}}
-{{- end -}}
 
+{{- $public_cdn := $.Scratch.Get "public_cdn" -}}
 {{- $Title := or $.Title (T "post.untitled") -}}
 <div class="h-full relative">
     <div class="h-full relative">
@@ -24,7 +21,7 @@
                     {{- $featured_image_url := or .Params.featured_image .Site.Params.defaultFeaturedImage -}}
 
                     {{- if (urls.Parse ($featured_image_url | safeURL)).Scheme -}}
-                        {{- $featured_image = $featured_image_url | relURL | safeURL -}}
+                        {{- $featured_image = $featured_image_url | safeURL -}}
                     {{- else -}}
                         {{- if .Params.featured_image -}}
                             {{- $featured_image = .Resources.GetMatch .Params.featured_image -}}
@@ -36,13 +33,13 @@
                         {{- $height = $featured_image.Height -}}
 
                         {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
-                            {{- $featured_image_small = print $cdn ($featured_image.Resize "800x").RelPermalink -}}
-                            {{- $featured_image_big = print $cdn ($featured_image.Resize "1200x").RelPermalink -}}
-                            {{- $featured_image_bg = print $cdn (($featured_image.Resize "50x").Filter (images.GaussianBlur 2)).RelPermalink -}}
+                            {{- $featured_image_small = print $public_cdn ($featured_image.Resize "800x").RelPermalink -}}
+                            {{- $featured_image_big = print $public_cdn ($featured_image.Resize "1200x").RelPermalink -}}
+                            {{- $featured_image_bg = print $public_cdn (($featured_image.Resize "50x").Filter (images.GaussianBlur 2)).RelPermalink -}}
                             {{- $srcset = printf "%s 800w, %s 1200w" $featured_image_small $featured_image_big -}}
 
-                            {{- $featured_image_small_webp = print $cdn ($featured_image.Resize "800x webp").RelPermalink -}}
-                            {{- $featured_image_big_webp = print $cdn ($featured_image.Resize "1200x webp").RelPermalink -}}
+                            {{- $featured_image_small_webp = print $public_cdn ($featured_image.Resize "800x webp").RelPermalink -}}
+                            {{- $featured_image_big_webp = print $public_cdn ($featured_image.Resize "1200x webp").RelPermalink -}}
                             {{- $srcset_webp = printf "%s 800w, %s 1200w" $featured_image_small_webp $featured_image_big_webp -}}
                         {{- end -}}
                     {{- end -}}

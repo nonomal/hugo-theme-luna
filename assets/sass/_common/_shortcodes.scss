@@ -27,7 +27,7 @@
 }
 
 .carousel {
-    @apply relative h-96 bg-gray-100 dark:bg-darkBgAccent rounded overflow-hidden;
+    @apply relative my-4 h-96 bg-gray-100 dark:bg-darkBgAccent rounded overflow-hidden;
     .slider-wrapper {
         @apply absolute left-0 top-0 w-full h-full overflow-hidden;
         input{
