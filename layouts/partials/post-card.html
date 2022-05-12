@@ -50,7 +50,7 @@
                 <picture>
                     {{- with $srcset_webp -}}<source {{ if $lazyload }}data-{{ end }}srcset="{{- $srcset_webp -}}" type="image/webp" />{{- end -}}
                     <img {{ if $lazyload }}data-{{ end }}src="{{- $featured_image -}}"
-                        {{ if $lazyload }}src="{{- $featured_image_bg -}}"{{ end }}
+                        {{ if $lazyload }}src="{{- or $featured_image_bg ($.Scratch.Get "svg_outload") -}}"{{ end }}
                         {{- with $width -}}width="{{- . -}}"{{- end -}}
                         {{- with $height -}}height="{{- . -}}"{{- end -}}
                         {{ if $lazyload }}data-{{ end }}srcset="{{- $srcset -}}"

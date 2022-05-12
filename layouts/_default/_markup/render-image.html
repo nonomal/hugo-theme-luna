@@ -7,7 +7,7 @@
 	<figure>
 		<picture>
 			<img {{ if $lazyload }}data-{{ end }}src="{{- .Destination | safeURL -}}"
-			{{ if $lazyload }}src="{{- print $public_cdn ("images/outload.svg" | relURL) -}}"{{ end }}
+			{{ if $lazyload }}src="{{- print $public_cdn ($.Page.Scratch.Get "svg_outload") -}}"{{ end }}
 			{{- with $Alt -}}alt="{{- . -}}"{{- end -}}
 			{{ if $imageZoom }}data-zoomable{{ end }}
 			{{ if $lazyload }}data-lazyload{{ end }}
