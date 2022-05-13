@@ -1,5 +1,5 @@
 {{- $icon := resources.Get "icon.png" -}}
-{{- $public_cdn := $.Store.Get "public_cdn" -}}
+{{- $public_cdn := cond .Site.IsServer "" .Site.Params.publicCDN -}}
 {{- $icon_192 := print $public_cdn ($icon.Resize "192x192").RelPermalink -}}
 {{- $icon_256 := print $public_cdn ($icon.Resize "256x256").RelPermalink -}}
 {{- $icon_384 := print $public_cdn ($icon.Resize "384x384").RelPermalink -}}

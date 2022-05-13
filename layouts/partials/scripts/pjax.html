@@ -1,7 +1,8 @@
+{{- $public_cdn := cond .Site.IsServer "" .Site.Params.publicCDN -}}
 {{- $pjaxScript := resources.Get "ts/pjax.ts" | js.Build (dict "minify" hugo.IsProduction) -}}
 {{- if .Site.IsServer -}}
     <script type="text/javascript" src="{{- $pjaxScript.RelPermalink -}}" defer></script>
 {{- else -}}
     {{- $pjaxScript := $pjaxScript | fingerprint -}}
-    <script type="text/javascript" src="{{- print ($.Store.Get "public_cdn") $pjaxScript.RelPermalink -}}" defer integrity="{{ $pjaxScript.Data.Integrity }}"></script>
+    <script type="text/javascript" src="{{- print $public_cdn $pjaxScript.RelPermalink -}}" defer integrity="{{ $pjaxScript.Data.Integrity }}"></script>
 {{- end -}}

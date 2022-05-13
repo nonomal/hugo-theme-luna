@@ -1,13 +1,13 @@
 {{- $lazyload := .Page.Site.Params.lazyload -}}
 {{- $imageZoom := .Page.Site.Params.imageZoom -}}
-{{- $public_cdn := $.Page.Store.Get "public_cdn" -}}
+{{- $public_cdn := cond .Page.Site.IsServer "" .Page.Site.Params.publicCDN -}}
 
 {{- $Alt := .PlainText | safeHTML -}}
 {{- if (urls.Parse (.Destination | safeURL)).Scheme -}}
 	<figure>
 		<picture>
 			<img {{ if $lazyload }}data-{{ end }}src="{{- .Destination | safeURL -}}"
-			{{ if $lazyload }}src="{{- print $public_cdn ($.Page.Store.Get "svg_outload") -}}"{{ end }}
+			{{ if $lazyload }}src="{{- print $public_cdn ("images/outload.svg" | relURL) -}}"{{ end }}
 			{{- with $Alt -}}alt="{{- . -}}"{{- end -}}
 			{{ if $imageZoom }}data-zoomable{{ end }}
 			{{ if $lazyload }}data-lazyload{{ end }}
