@@ -2,12 +2,12 @@
 
 {{- $katex := "" -}}
 {{- if .Site.Params.katex -}}
-    {{- $katex = print ($.Scratch.Get "public_cdn") (resources.Get "ts/katex.ts" | js.Build (dict "minify" hugo.IsProduction "shims" (dict "katex" "modules/katex.js"))).RelPermalink -}}
+    {{- $katex = print ($.Store.Get "public_cdn") (resources.Get "ts/katex.ts" | js.Build (dict "minify" hugo.IsProduction "shims" (dict "katex" "modules/katex.js"))).RelPermalink -}}
 {{- end -}}
 {{- $mainScript := resources.Get "ts/main.ts" | js.Build (dict "minify" hugo.IsProduction "params" (dict "search" $searchScript.RelPermalink "katex" $katex)) -}}
 {{- if .Site.IsServer -}}
     <script type="text/javascript" src="{{- $mainScript.RelPermalink -}}" defer></script>
 {{- else -}}
     {{- $mainScript := $mainScript | fingerprint -}}
-    <script type="text/javascript" src="{{- print ($.Scratch.Get "public_cdn") $mainScript.RelPermalink -}}" defer integrity="{{ $mainScript.Data.Integrity }}"></script>
+    <script type="text/javascript" src="{{- print ($.Store.Get "public_cdn") $mainScript.RelPermalink -}}" defer integrity="{{ $mainScript.Data.Integrity }}"></script>
 {{- end -}}

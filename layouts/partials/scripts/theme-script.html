@@ -3,7 +3,7 @@
 {{- $version := getenv "HUGO_VERSION" -}}
 <script type="text/javascript">
 window.__theme = {
-    cdn: '{{- $.Scratch.Get "public_cdn" -}}',
+    cdn: '{{- $.Store.Get "public_cdn" -}}',
     pjax: {{- $pjax -}},
     isServer: {{- $isServer -}},
     $version: {{- $version -}},
@@ -17,8 +17,8 @@ window.__theme = {
         userStorage: {{- if .Site.Params.HugoEncrypt.Storage -}} window['{{- .Site.Params.HugoEncrypt.Storage -}}Storage'] {{- else -}} localStorage {{- end -}},
     },
     assets: {
-        error_svg: "{{- $.Scratch.Get "svg_error" -}}",
-        search_svg: "{{- $.Scratch.Get "svg_search" -}}",
+        error_svg: "{{- $.Store.Get "svg_error" -}}",
+        search_svg: "{{- $.Store.Get "svg_search" -}}",
     },
     i18n: {
         untitled: "{{ i18n "post.untitled" }}",

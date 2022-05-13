@@ -1,4 +1,4 @@
-{{- $.Scratch.Set "public_cdn" (cond .Site.IsServer "" .Site.Params.publicCDN) -}}
+{{- $.Store.Set "public_cdn" (cond .Site.IsServer "" .Site.Params.publicCDN) -}}
 
 <!DOCTYPE html>
 <html lang="{{- .Language -}}" class="lang-{{- .Language -}}">

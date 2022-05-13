@@ -1,6 +1,6 @@
 {{- $src := .Get "src" | default (.Get 0) -}}
 {{- if not (urls.Parse $src).Scheme -}}
-    {{- $src = print ($.Scratch.Get "public_cdn") .Page.RelPermalink $src -}}
+    {{- $src = print ($.Store.Get "public_cdn") .Page.RelPermalink $src -}}
 {{- end -}}
 <div class="video-wrapper">
     <video

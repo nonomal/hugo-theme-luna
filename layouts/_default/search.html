@@ -9,7 +9,7 @@
             <h2 class=" text-center mt-12 text-2xl font-bold -mb-10">{{- T "noscript" -}}</h2>
         </noscript>
         <div id="search-image" class="flex justify-center items-center mt-20">
-            <img src="{{- print ($.Scratch.Get "public_cdn") ($.Scratch.Get "svg_search") -}}" alt="search-results" class="pointer-events-none max-w-xs md:max-w-sm max-h-full">
+            <img src="{{- print ($.Store.Get "public_cdn") ($.Store.Get "svg_search") -}}" alt="search-results" class="pointer-events-none max-w-xs md:max-w-sm max-h-full">
         </div>
         <div id="search-results"></div>
     </div>

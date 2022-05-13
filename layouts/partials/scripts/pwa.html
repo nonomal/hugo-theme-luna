@@ -1,5 +1,5 @@
 <!-- main.js -->
-{{- $script := resources.Get "modules/sw.js" | js.Build (dict "minify" hugo.IsProduction "params" (dict "cdn" ($.Scratch.Get "public_cdn") "url" .Site.BaseURL)) -}}
+{{- $script := resources.Get "modules/sw.js" | js.Build (dict "minify" hugo.IsProduction "params" (dict "cdn" ($.Store.Get "public_cdn") "url" .Site.BaseURL)) -}}
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
