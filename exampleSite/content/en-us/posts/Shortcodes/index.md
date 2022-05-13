@@ -246,3 +246,12 @@ The paella dish I rate {{< rating 10 6 >}}
 {{< carousel "https://unsplash.it/1920/1080/?random=1" "https://unsplash.it/1920/1080/?random=2" "https://unsplash.it/1920/1080/?random=3" "https://unsplash.it/1920/1080/?random=4" >}}
 
 {{< carousel "4.jpg" "7.jpg" "9.jpg" >}}
+
+## Timeline
+
+```markdown
+{{</* timeline "2018-01-01 Eat salada today" "2018-01-02 Eat paella today" "2018-01-03 Eat pizza today" */>}}
+```
+
+{{< timeline "2018-01-01 Eat salada today" "2018-01-02 Eat paella today" "2018-01-03 Eat pizza today" >}}
+

@@ -77,3 +77,9 @@
         }
     }
 }
+
+.timeline {
+    .timeline-item {
+        @apply relative pb-4 pl-6 leading-7 before:z-10 before:absolute before:left-0 before:top-2 before:block before:w-2.5 before:h-2.5 before:bg-gray-400 hover:before:bg-theme before:mr-6 before:rounded-full after:block after:absolute after:top-4 after:left-[0.1875rem] after:bg-gray-100 after:w-1 after:h-full last:after:hidden;
+    }
+}
