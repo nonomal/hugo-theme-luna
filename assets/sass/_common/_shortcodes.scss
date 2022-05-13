@@ -31,7 +31,7 @@
     .slider-wrapper {
         @apply absolute left-0 top-0 w-full h-full overflow-hidden;
         input{
-            @apply absolute -left-[9999px];
+            @apply hidden;
         }
         .slider-arrow-nav{
             .nav-arrow {
