@@ -158,8 +158,10 @@
                     </span>
                     <span>{{ T "post.prevPost" }}</span>
                 </a>
-
-                {{- partial "post/license" .}}
+                
+                {{- if .Site.Params.license.enabled -}}
+                    {{- partial "post/license" .}}
+                {{- end -}}
 
                 <a href="{{- if .NextInSection -}}{{- .NextInSection.RelPermalink -}}{{- end -}}" title="{{- if .NextInSection -}} {{- .NextInSection.Title -}} {{- end -}}" class=" cursor-pointer flex hover:text-theme items-center text-gray-500 transition duration-300 ease-[ease] invisible dark:text-darkTextPlaceholder dark:hover:text-darkText" {{- if .NextInSection -}} style="visibility: visible;" {{- end -}}>
                     <span>{{ T "post.nextPost" }}</span>

@@ -15,10 +15,10 @@ categories:
 ## Abbr
 
 ```markdown
-{{</* abbr "HUST" "Huazhong University of Science and Technology" */>}}
+{{</* abbr "MIT" "Massachusetts Institute of Technology" */>}}
 ```
 
-{{< abbr "HUST" "Huazhong University of Science and Technology" >}}
+{{< abbr "MIT" "Massachusetts Institute of Technology" >}}
 
 ## Text layout
 

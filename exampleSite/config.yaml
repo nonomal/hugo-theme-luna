@@ -155,6 +155,7 @@ languages:
         id: "Ice-Hazymoon"
         minStars: 10
       license:
+        enabled: true
         name: "署名 - 非商业性使用 - 禁止演绎 4.0"
         icon: "Cc-by-nc-nd.svg" # in assets folder
         url: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"
@@ -257,6 +258,7 @@ params:
   # 文章许可设置
   # license
   license:
+    enabled: true
     name: "CC BY-NC-ND 4.0"
     icon: "Cc-by-nc-nd.svg" # in assets folder
     url: "https://creativecommons.org/licenses/by-nc-nd/4.0"

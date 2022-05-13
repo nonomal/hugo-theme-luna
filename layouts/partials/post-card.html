@@ -50,7 +50,7 @@
                 <picture>
                     {{- with $srcset_webp -}}<source {{ if $lazyload }}data-{{ end }}srcset="{{- $srcset_webp -}}" type="image/webp" />{{- end -}}
                     <img {{ if $lazyload }}data-{{ end }}src="{{- $featured_image -}}"
-                        {{ if $lazyload }}src="{{- or $featured_image_bg ($.Store.Get "svg_outload") -}}"{{ end }}
+                        {{ if $lazyload }}src="{{- or $featured_image_bg ($.Scratch.Get "svg_outload") -}}"{{ end }}
                         {{- with $width -}}width="{{- . -}}"{{- end -}}
                         {{- with $height -}}height="{{- . -}}"{{- end -}}
                         {{ if $lazyload }}data-{{ end }}srcset="{{- $srcset -}}"
@@ -86,16 +86,16 @@
             
             <div class="sm:hidden block px-5 border-t dark:border-darkBorder pt-5">
                 <a href="{{- .RelPermalink -}}" class="font-bold line-clamp-2 md:line-clamp-3 text-2xl group-hover:text-theme">{{- .Title -}}</a>
-                {{- with $Summary -}}<div class="line-clamp-2 mt-4 mb-1" title="{{- . -}} ...">{{ . }} <span class=" text-gray-400"></span></div>{{- end -}}
+                {{- with $Summary -}}<div class="line-clamp-2 mt-4 mb-1" title="{{- . -}} ...">{{ . }}</div>{{- end -}}
             </div>
         {{- else -}}
             <a href="{{- .RelPermalink -}}" class="block px-5 dark:border-darkBorder pt-5">
                 <div class="font-bold line-clamp-2 md:line-clamp-3 text-2xl group-hover:text-theme">{{- .Title -}}</div>
-                {{- with $Summary -}}<div class="line-clamp-2 mt-4 mb-1" title="{{- . -}} ...">{{ . }} <span class=" text-gray-400">...</span></div>{{- end -}}
+                {{- with $Summary -}}<div class="line-clamp-2 mt-4 mb-1" title="{{- . -}} ...">{{ . }} <span>...</span></div>{{- end -}}
             </a>
         {{- end -}}
         <div class="article-info flex justify-between px-5 py-4 text-sm">
-            <div class="flex {{ if not $hasCover }} sm:text-gray-400{{ else }}sm:text-gray-500{{ end }} text-gray-400 dark:text-gray-400">
+            <div class="flex {{ if $hasCover }} sm:text-inherit{{ end }} text-gray-400 dark:text-gray-400">
                 <div class="flex items-center mr-4">
                     <i class="eva eva-clock-outline mr-1"></i>
                     <span>
@@ -128,10 +128,10 @@
                     {{- end -}}
                 {{- end -}}
             </div>
-            <div class="flex items-center sm:hidden text-gray-400 dark:text-darkText ">
+            <div class="flex items-center sm:hidden">
                 {{- if .Params.tags -}}
                     {{- range .Params.tags -}}
-                    <a href="{{- "/tags/" | relLangURL -}}{{- . | urlize -}}" title="{{- . -}}" class="mx-1 flex items-center text-gray-600 text-opacity-70 dark:text-darkText hover:text-opacity-100">
+                    <a href="{{- "/tags/" | relLangURL -}}{{- . | urlize -}}" title="{{- . -}}" class="mx-1 flex items-center text-gray-500 text-opacity-70 dark:text-darkText hover:text-opacity-100">
                         <i class="eva eva-hash-outline mr-0.5"></i>
                         <span>{{- . -}}</span>
                     </a>
@@ -147,7 +147,7 @@
                 <i class="eva eva-edit-2-outline"></i>
             </div>
             <div class="flex-grow justify-between">
-                {{- with $Summary -}}<div class="text-xl line-clamp-3">{{ . }} <span class=" text-gray-400">...</span></div>{{- end -}}
+                {{- with $Summary -}}<div class="text-xl line-clamp-3">{{ . }} <span>...</span></div>{{- end -}}
                 <div class="flex items-center mt-2 self-end text-gray-400 text-sm">
                     <i class="eva eva-clock-outline mr-1"></i>
                     <div>

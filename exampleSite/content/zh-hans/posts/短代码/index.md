@@ -12,6 +12,14 @@ categories:
   - Luna
 ---
 
+## Abbr
+
+```markdown
+{{</* abbr "AWSL" "啊我死了" */>}}
+```
+
+{{< abbr "AWSL" "啊我死了" >}}
+
 ## 文字排版
 
 ```markdown
@@ -235,6 +243,10 @@ categories:
 
 ```markdown
 {{</* carousel "https://unsplash.it/1920/1080/?random=1" "https://unsplash.it/1920/1080/?random=2" "https://unsplash.it/1920/1080/?random=3" "https://unsplash.it/1920/1080/?random=4" */>}}
+
+{{</* carousel "4.jpg" "7.jpg" "9.jpg" */>}}
 ```
 
 {{< carousel "https://unsplash.it/1920/1080/?random=1" "https://unsplash.it/1920/1080/?random=2" "https://unsplash.it/1920/1080/?random=3" "https://unsplash.it/1920/1080/?random=4" >}}
+
+{{< carousel "4.jpg" "7.jpg" "9.jpg" >}}

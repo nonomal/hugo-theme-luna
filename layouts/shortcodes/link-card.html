@@ -16,6 +16,6 @@
         {{- end -}}
     </div>
     {{- if (.Get "img") -}}
-    <img class="link-card-img h-32 bg-white dark:bg-darkBg object-contain" src="{{ .Get "img" }}" alt="{{- .Get "name" -}}">
+    <img class="link-card-img h-32 bg-white dark:bg-transparent object-contain" src="{{ .Get "img" }}" alt="{{- .Get "name" -}}">
     {{- end -}}
 </a>
