@@ -62,7 +62,7 @@ scoop install hugo-extended
 ```bash
 git submodule add https://github.com/Ice-Hazymoon/hugo-theme-luna themes/hugo-theme-luna
 cd themes/hugo-theme-luna
-npm install
+npm install --production
 ```
 
 在主题 [`exampleSite`](https://github.com/Ice-Hazymoon/hugo-theme-luna/tree/main/exampleSite) 目录有一个 [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) 文件，将该文件复制到你的站点目录下并根据需求修改相关内容。
@@ -175,6 +175,7 @@ console.log('加密代码块测试');
 ```sh
 git clone https://github.com/Ice-Hazymoon/hugo-theme-luna/
 cd hugo-theme-luna
+npm install
 hugo server -s ./exampleSite -D --themesDir "../.."
 ```
 

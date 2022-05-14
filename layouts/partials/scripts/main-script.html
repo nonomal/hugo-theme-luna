@@ -9,6 +9,5 @@
 {{- if .Site.IsServer -}}
     <script type="text/javascript" src="{{- $mainScript.RelPermalink -}}" defer></script>
 {{- else -}}
-    {{- $mainScript := $mainScript | fingerprint -}}
-    <script type="text/javascript" src="{{- print $public_cdn $mainScript.RelPermalink -}}" defer integrity="{{ $mainScript.Data.Integrity }}"></script>
+    {{- $mainScript := $mainScript | fingerprint -}}    <script type="text/javascript" src="{{- print $public_cdn $mainScript.RelPermalink -}}" defer integrity="{{- $mainScript.Data.Integrity -}}"></script>
 {{- end -}}

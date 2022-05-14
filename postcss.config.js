@@ -10,7 +10,7 @@ module.exports = {
     modules: true,
     plugins: !isDev ? {
         'postcss-import': {
-            path: [path.join(__dirname, '/node_modules')],
+            path: [path.join(__dirname, '/node_modules'), path.join(__dirname, '/assets/modules')],
         },
         tailwindcss: {
             config: path.join(__dirname, '/tailwind.config.js'),
@@ -66,7 +66,7 @@ module.exports = {
         }
     }: {
         'postcss-import': {
-            path: [path.join(__dirname, '/node_modules')],
+            path: [path.join(__dirname, '/node_modules'), path.join(__dirname, '/assets/modules')],
         },
         tailwindcss: {
             config: path.join(__dirname, '/tailwind.config.js'),

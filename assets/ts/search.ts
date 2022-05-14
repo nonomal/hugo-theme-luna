@@ -70,7 +70,7 @@ async function initSearch() {
         });
         if (value) {
             const html = `<div class="p-6 pb-0">
-                <div class=" font-bold text-2xl border-b dark:border-darkBorder pb-4">
+                <div class="font-bold text-2xl border-b dark:border-darkBorder pb-4">
                     ${window.__theme.i18n.searchResults(results.length, value)}
                 </div>
                 ` + results.map(n => {
@@ -88,9 +88,9 @@ async function initSearch() {
                             href="${n.permalink}"
                             class="border-b dark:border-darkBorder py-4 block search-results-items"
                         >
-                            <div class=" text-2xl mb-2 line-clamp-1 transition duration-300 ease-[ease]">${titleHTML || window.__theme.i18n.untitled}</div>
-                            <div class=" mb-2 line-clamp-2">${contentHTML}...</div>
-                            <div class=" text-xs flex items-center text-gray-500 dark:text-darkTextPlaceholder">
+                            <div class="text-2xl mb-2 line-clamp-1 transition duration-300 ease-[ease]">${titleHTML || window.__theme.i18n.untitled}</div>
+                            <div class="mb-2 line-clamp-2">${contentHTML}...</div>
+                            <div class="text-xs flex items-center text-gray-500 dark:text-darkTextPlaceholder">
                                 <i class="eva eva-clock-outline mr-1"></i>
                                 <span>${n.date}</span>
                             </div>

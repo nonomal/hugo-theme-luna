@@ -9,25 +9,27 @@
     {{- $description = .Summary | plainify -}}
 {{- end -}}
 
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="{{- range union (union .Params.tags .Params.categories) .Site.Params.keywords -}}{{.}},{{- end -}}">
-    <meta name="description" content="{{- $description -}}">
-    <meta itemprop="description" content="{{- $description -}}">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta itemprop="name" content="{{- $title -}}">
-    <link href="{{- `index.xml` | absURL -}}" title="{{- $title -}}" type="application/rss+xml" rel="alternate">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="{{- range union (union .Params.tags .Params.categories) .Site.Params.keywords -}}{{ . }},{{- end -}}" />
+    <meta name="description" content="{{- $description -}}" />
+    <meta itemprop="description" content="{{- $description -}}" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta itemprop="name" content="{{- $title -}}" />
+    <link href="{{- `index.xml` | absURL -}}" title="{{- $title -}}" type="application/rss+xml" rel="alternate" />
     <title>{{- $title -}}</title>
-    {{ $sassTemplate := resources.Get "sass/main.scss" }}
-    {{ $styles := $sassTemplate | resources.ExecuteAsTemplate "sass/main.scss" . | resources.ToCSS | postCSS (dict "config" "postcss.config.js") }}
+    {{- $sassTemplate := resources.Get "sass/main.scss" -}}
+    {{- $styles := $sassTemplate | resources.ExecuteAsTemplate "sass/main.scss" . | resources.ToCSS | postCSS (dict "config" "postcss.config.js") -}}
 
     {{- if .Site.IsServer -}}
-        <link rel="stylesheet" href="{{- $styles.RelPermalink -}}"/>
+        <link rel="stylesheet" href="{{- $styles.RelPermalink -}}" />
     {{- else -}}
-        {{ $styles := $styles | fingerprint | resources.PostProcess }}
-        <link rel="stylesheet" href="{{- print $public_cdn $styles.RelPermalink -}}" integrity="{{ $styles.Data.Integrity }}"/>
+        {{- $styles := $styles | fingerprint | resources.PostProcess -}}
+        <link rel="stylesheet" href="{{- print $public_cdn $styles.RelPermalink -}}" integrity="{{- $styles.Data.Integrity -}}" />
     {{- end -}}
+
 
     <meta property="og:site_name" content="{{- $title -}}" />
     <meta property="og:type" content="{{- if $.IsNode -}}website{{- else -}}article{{- end -}}" />
@@ -44,36 +46,37 @@
     <meta name="twitter:site" content="@{{- .Site.Params.author -}}" />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1280" />
-    <meta name="theme-color" content="{{- .Params.themeColor -}}"></meta>
+    <meta name="theme-color" content="{{- .Params.themeColor -}}" />
     {{- if .IsPage -}}
         {{- if not .Date.IsZero -}}
-            <meta property='article:published_time' content='{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}'/>
+            <meta property="article:published_time" content="{{- .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML -}}" />
         {{- end -}}
         {{- if not .Lastmod.IsZero -}}
-            <meta property='article:modified_time' content='{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}'/>
+            <meta property="article:modified_time" content="{{- .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML -}}" />
         {{- end -}}
     {{- else -}}
         {{- if not .Site.LastChange.IsZero -}}
-            <meta property='og:updated_time' content='{{ .Site.LastChange.Format " 2006-01-02T15:04:05-07:00 " | safeHTML }}'/>
+            <meta property="og:updated_time" content="{{- .Site.LastChange.Format " 2006-01-02T15:04:05-07:00 " | safeHTML -}}" />
         {{- end -}}
     {{- end -}}
-    
 
     {{- $favicon_icon := resources.Get "icon.png" -}}
     {{- $favicon_icon = $favicon_icon.Resize "48x48 ico icon" -}}
     {{- $favicon_icon = slice $favicon_icon | resources.Concat "favicon.ico" -}}
     {{- $favicon_icon = print $public_cdn $favicon_icon.RelPermalink -}}
-    
-    <link rel="shortcut icon" href="{{- $favicon_icon -}}" type="image/x-icon">
 
-    {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . }}
-    <link rel="manifest" href="{{ $manifest.RelPermalink }}">
+
+    <link rel="shortcut icon" href="{{- $favicon_icon -}}" type="image/x-icon" />
+
+    {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . -}}
+    <link rel="manifest" href="{{- $manifest.RelPermalink -}}" />
 
     {{- $icon := print $public_cdn (resources.Get "icon.png").RelPermalink -}}
     <link href="{{- $icon -}}" rel="shortcut icon" />
     <link href="{{- $icon -}}" rel="Bookmark" />
-    <link rel="apple-touch-icon" href="{{- $icon -}}"/>
+    <link rel="apple-touch-icon" href="{{- $icon -}}" />
     {{- partial "site-schema.html" . -}}
+
 
     <!-- custom.js -->
     {{- partial "custom/head" . -}}

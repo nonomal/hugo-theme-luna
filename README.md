@@ -59,7 +59,7 @@ scoop install hugo-extended
 ```bash
 git submodule add https://github.com/Ice-Hazymoon/hugo-theme-luna themes/hugo-theme-luna
 cd themes/hugo-theme-luna
-npm install
+npm install --production
 ```
 
 There is a [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) file in the [`exampleSite`](https://github.com/Ice-Hazymoon/hugo-theme-luna/tree/main/exampleSite) directory, copy the file to your site directory and modify the contents.
@@ -170,6 +170,7 @@ Add a `TOKEN` field to **github.com/{username}/{project}/settings/secrets/action
 ```sh
 git clone https://github.com/Ice-Hazymoon/hugo-theme-luna/
 cd hugo-theme-luna
+npm install
 hugo server -s ./exampleSite -D --themesDir "../.."
 ```
 

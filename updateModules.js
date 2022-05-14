@@ -1,25 +1,60 @@
 const fs = require('fs');
+const path = require('path');
+
+const modules_path = './assets/modules/';
 
 const modules = {
-    'jump.js/dist/jump.js': './assets/modules/jump.js',
-    'clipboard/dist/clipboard.js': './assets/modules/clipboard.js',
-    'vanilla-lazyload/dist/lazyload.js': './assets/modules/lazyload.js',
-    'medium-zoom/dist/medium-zoom.js': './assets/modules/medium-zoom.js',
-    'swup/dist/swup.js': './assets/modules/swup.js',
-    '@swup/fade-theme/dist/SwupFadeTheme.js': './assets/modules/SwupFadeTheme.js',
-    '@swup/ga-plugin/dist/SwupGaPlugin.js': './assets/modules/SwupGaPlugin.js',
-    '@swup/progress-plugin/dist/SwupProgressPlugin.js': './assets/modules/SwupProgressPlugin.js',
-    '@swup/scripts-plugin/dist/SwupScriptsPlugin.js': './assets/modules/SwupScriptsPlugin.js',
-    '@swup/slide-theme/dist/SwupSlideTheme.js': './assets/modules/SwupSlideTheme.js',
-    'swup-morph-plugin/dist/SwupMorphPlugin.js': './assets/modules/SwupMorphPlugin.js',
-    'flexsearch/dist/flexsearch.bundle.js': './assets/modules/flexsearch.js',
-    'katex/dist/katex.js': './assets/modules/katex.js',
-    'katex/dist/contrib/auto-render.js': './assets/modules/katex-render.js',
-    'katex/dist/contrib/copy-tex.js': './assets/modules/katex-copy.js',
+    'jump.js/dist/jump.js': 'jump.js',
+    'clipboard/dist/clipboard.js': 'clipboard.js',
+    'vanilla-lazyload/dist/lazyload.js': 'lazyload.js',
+    'medium-zoom/dist/medium-zoom.js': 'medium-zoom.js',
+    'swup/dist/swup.js': 'swup.js',
+    '@swup/fade-theme/dist/SwupFadeTheme.js': 'SwupFadeTheme.js',
+    '@swup/ga-plugin/dist/SwupGaPlugin.js': 'SwupGaPlugin.js',
+    '@swup/progress-plugin/dist/SwupProgressPlugin.js': 'SwupProgressPlugin.js',
+    '@swup/scripts-plugin/dist/SwupScriptsPlugin.js': 'SwupScriptsPlugin.js',
+    '@swup/slide-theme/dist/SwupSlideTheme.js': 'SwupSlideTheme.js',
+    'swup-morph-plugin/dist/SwupMorphPlugin.js': 'SwupMorphPlugin.js',
+    'flexsearch/dist/flexsearch.bundle.js': 'flexsearch.js',
+    'katex/dist/katex.js': 'katex.js',
+    'katex/dist/katex.css': 'katex.css',
+    'katex/dist/contrib/auto-render.js': 'katex-render.js',
+    'katex/dist/contrib/copy-tex.js': 'katex-copy.js',
+    'normalize.css/normalize.css': 'normalize.css',
+    'eva-icons/style/eva-icons.css': 'eva-icons/eva-icons.css',
+    'eva-icons/style/fonts': 'eva-icons/fonts',
+}
+
+function copyFolderSync(from, to) {
+    fs.mkdirSync(to);
+    fs.readdirSync(from).forEach(element => {
+        if (fs.lstatSync(path.join(from, element)).isFile()) {
+            fs.copyFileSync(path.join(from, element), path.join(to, element));
+        } else {
+            copyFolderSync(path.join(from, element), path.join(to, element));
+        }
+    });
 }
 
 for (let index = 0; index < Object.keys(modules).length; index++) {
     const key = Object.keys(modules)[index];
+    const key_path = `node_modules/${key}`;
     const value = modules[key];
-    fs.copyFileSync(`node_modules/${key}`, `${value}`);
+    const value_path = `${modules_path}${value}`;
+    if (!fs.existsSync(key_path)) {
+        console.log(`${key_path} not found`);
+        continue;
+    }
+    
+    const dir_path = path.join(value_path, '..');
+    if (!fs.existsSync(dir_path)) {
+        fs.mkdirSync(dir_path, { recursive: true });
+    }
+    if (fs.lstatSync(key_path).isDirectory() ) {
+        // copy dir
+        copyFolderSync(key_path, `${modules_path}${value}`);
+    } else {
+        // copy file
+        fs.copyFileSync(key_path, `${modules_path}${value}`);
+    }
 }

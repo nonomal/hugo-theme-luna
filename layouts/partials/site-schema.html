@@ -24,13 +24,12 @@
   {{- end -}}
   "name": "{{- .Site.Title -}}"
 }
-</script>
-{{/*
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "http://example.com/search?&q={query}",
-    "query-input": "required"
-  } */}}
+</script> {{/* "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://example.com/search?&q={query}",
+        "query-input": "required"
+        }
+    */}}
 {{- else if .IsPage -}}
 <script type="application/ld+json">
 {
