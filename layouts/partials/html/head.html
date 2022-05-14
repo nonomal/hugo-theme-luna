@@ -68,7 +68,7 @@
 
     <link rel="shortcut icon" href="{{- $favicon_icon -}}" type="image/x-icon" />
 
-    {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . -}}
+    {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate (print ("/" | relLangURL) "manifest.json") . -}}
     <link rel="manifest" href="{{- $manifest.RelPermalink -}}" />
 
     {{- $icon := print $public_cdn (resources.Get "icon.png").RelPermalink -}}
