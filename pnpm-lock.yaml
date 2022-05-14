@@ -7,9 +7,9 @@ specifiers:
   '@swup/progress-plugin': ^1.1.1
   '@swup/scripts-plugin': ^1.1.0
   '@swup/slide-theme': ^1.0.5
-  '@tailwindcss/line-clamp': ^0.3.1
-  autoprefixer: ^10.4.5
-  clipboard: ^2.0.10
+  '@tailwindcss/line-clamp': ^0.4.0
+  autoprefixer: ^10.4.7
+  clipboard: ^2.0.11
   cssnano: ^5.1.7
   cssnano-preset-advanced: ^5.3.3
   eva-icons: ^1.1.3
@@ -18,7 +18,7 @@ specifiers:
   katex: ^0.15.3
   medium-zoom: ^1.0.6
   normalize.css: ^8.0.1
-  postcss: ^8.4.12
+  postcss: ^8.4.13
   postcss-easing-gradients: ^3.0.1
   postcss-font-display: ^0.3.0
   postcss-import: ^14.1.0
@@ -26,16 +26,16 @@ specifiers:
   postcss-replace-values: ^2.3.0
   postcss-url: ^10.1.3
   prettier: ^2.6.2
-  prettier-plugin-go-template: ^0.0.12
+  prettier-plugin-go-template: ^0.0.13
   prettier-plugin-tailwindcss: ^0.1.10
   swup: ^2.0.14
-  swup-morph-plugin: ^0.1.0
+  swup-morph-plugin: ^0.2.0
   tailwindcss: ^3.0.24
   vanilla-lazyload: ^17.8.1
 
 dependencies:
   '@fullhuman/postcss-purgecss': registry.npmmirror.com/@fullhuman/postcss-purgecss/4.1.3_postcss@8.4.13
-  '@tailwindcss/line-clamp': registry.npmmirror.com/@tailwindcss/line-clamp/0.3.1_tailwindcss@3.0.24
+  '@tailwindcss/line-clamp': registry.npmmirror.com/@tailwindcss/line-clamp/0.4.0_tailwindcss@3.0.24
   autoprefixer: registry.npmmirror.com/autoprefixer/10.4.7_postcss@8.4.13
   cssnano: registry.npmmirror.com/cssnano/5.1.7_postcss@8.4.13
   cssnano-preset-advanced: registry.npmmirror.com/cssnano-preset-advanced/5.3.3_postcss@8.4.13
@@ -62,10 +62,10 @@ devDependencies:
   normalize.css: registry.npmmirror.com/normalize.css/8.0.1
   postcss: registry.npmmirror.com/postcss/8.4.13
   prettier: registry.npmmirror.com/prettier/2.6.2
-  prettier-plugin-go-template: registry.npmmirror.com/prettier-plugin-go-template/0.0.12_prettier@2.6.2
+  prettier-plugin-go-template: registry.npmmirror.com/prettier-plugin-go-template/0.0.13_prettier@2.6.2
   prettier-plugin-tailwindcss: registry.npmmirror.com/prettier-plugin-tailwindcss/0.1.10_prettier@2.6.2
   swup: registry.npmmirror.com/swup/2.0.14
-  swup-morph-plugin: registry.npmmirror.com/swup-morph-plugin/0.1.0
+  swup-morph-plugin: registry.npmmirror.com/swup-morph-plugin/0.2.0
   vanilla-lazyload: registry.npmmirror.com/vanilla-lazyload/17.8.1
 
 packages:
@@ -193,11 +193,11 @@ packages:
     version: 1.0.7
     dev: true
 
-  registry.npmmirror.com/@tailwindcss/line-clamp/0.3.1_tailwindcss@3.0.24:
-    resolution: {integrity: sha512-pNr0T8LAc3TUx/gxCfQZRe9NB2dPEo/cedPHzUGIPxqDMhgjwNm6jYxww4W5l0zAsAddxr+XfZcqttGiFDgrGg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tailwindcss/line-clamp/-/line-clamp-0.3.1.tgz}
-    id: registry.npmmirror.com/@tailwindcss/line-clamp/0.3.1
+  registry.npmmirror.com/@tailwindcss/line-clamp/0.4.0_tailwindcss@3.0.24:
+    resolution: {integrity: sha512-HQZo6gfx1D0+DU3nWlNLD5iA6Ef4JAXh0LeD8lOGrJwEDBwwJNKQza6WoXhhY1uQrxOuU8ROxV7CqiQV4CoiLw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tailwindcss/line-clamp/-/line-clamp-0.4.0.tgz}
+    id: registry.npmmirror.com/@tailwindcss/line-clamp/0.4.0
     name: '@tailwindcss/line-clamp'
-    version: 0.3.1
+    version: 0.4.0
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
@@ -1885,11 +1885,11 @@ packages:
       picocolors: registry.npmmirror.com/picocolors/1.0.0
       source-map-js: registry.npmmirror.com/source-map-js/1.0.2
 
-  registry.npmmirror.com/prettier-plugin-go-template/0.0.12_prettier@2.6.2:
-    resolution: {integrity: sha512-3LGFSjUTwirXa56dY7ZbNETM5nMUc5TKPYyo7cJx/8mdMnWUCMKTVzBQ3K7xUk2+D4g8CLADQ3Nc1HZ5SNWeag==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/prettier-plugin-go-template/-/prettier-plugin-go-template-0.0.12.tgz}
-    id: registry.npmmirror.com/prettier-plugin-go-template/0.0.12
+  registry.npmmirror.com/prettier-plugin-go-template/0.0.13_prettier@2.6.2:
+    resolution: {integrity: sha512-gG/xT5kd+kCzoMaTchXvdfBdsunyRCV6G8cgdPGPd2V5JGGKXUG7SjzBKU7jaGh2RTeblcAdBb/E+S/duOAMsA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/prettier-plugin-go-template/-/prettier-plugin-go-template-0.0.13.tgz}
+    id: registry.npmmirror.com/prettier-plugin-go-template/0.0.13
     name: prettier-plugin-go-template
-    version: 0.0.12
+    version: 0.0.13
     engines: {node: '>=14.0.0'}
     peerDependencies:
       prettier: ^2.0.0
@@ -2109,10 +2109,10 @@ packages:
       stable: registry.npmmirror.com/stable/0.1.8
     dev: false
 
-  registry.npmmirror.com/swup-morph-plugin/0.1.0:
-    resolution: {integrity: sha512-bn2Q8qTgs7YEDG7rtlutgz2iiGr/yP2po/SC4Af97fFKVa+DVSj0Dk6wFZltzw7pg28w4rAEXTU4QpJh9h3PmQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/swup-morph-plugin/-/swup-morph-plugin-0.1.0.tgz}
+  registry.npmmirror.com/swup-morph-plugin/0.2.0:
+    resolution: {integrity: sha512-ZNME35EY1kiO+H7Izx8+2cHWR6hw5X4c+wfgWJMNvrYxZDG7gW8hyH3FoWm+zwo1rhNlUCestLDBHrTC65JpDA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/swup-morph-plugin/-/swup-morph-plugin-0.2.0.tgz}
     name: swup-morph-plugin
-    version: 0.1.0
+    version: 0.2.0
     dependencies:
       '@swup/plugin': registry.npmmirror.com/@swup/plugin/1.0.1
       morphdom: registry.npmmirror.com/morphdom/2.6.1
