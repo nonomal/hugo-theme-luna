@@ -1,9 +1,8 @@
 .page-gallery {
-    @apply columns-2 sm:columns-3 md:columns-4 gap-0;
     .gallery-image {
-        @apply relative;
+        @apply relative rounded overflow-hidden mb-4;
         figcaption {
-            @apply absolute bottom-0 px-4 pt-8 pb-4 text-center text-lg pointer-events-none text-white w-full opacity-0 transition-opacity duration-300;
+            @apply absolute bottom-0 px-4 pt-8 pb-4 text-center text-lg pointer-events-none text-white w-full opacity-100 md:opacity-0 transition-opacity duration-300;
             background-image: linear-gradient(
                 to bottom,
                 hsla(330, 0%, 0%, 0),
