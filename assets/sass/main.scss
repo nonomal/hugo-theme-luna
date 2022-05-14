@@ -5,7 +5,7 @@ $font: {{.Param "font"}};
 @tailwind components;
 @tailwind utilities;
 @import 'normalize.css';
-@import 'katex.css';
+@import 'katex/katex.css';
 @import 'eva-icons/eva-icons.css';
 @import './theme.scss';
 @import './typo.scss';

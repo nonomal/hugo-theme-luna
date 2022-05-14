@@ -3,7 +3,7 @@
 
 {{- $katex := "" -}}
 {{- if .Site.Params.katex -}}
-    {{- $katex = print $public_cdn (resources.Get "ts/katex.ts" | js.Build (dict "minify" hugo.IsProduction "shims" (dict "katex" "modules/katex.js"))).RelPermalink -}}
+    {{- $katex = print $public_cdn (resources.Get "ts/katex.ts" | js.Build (dict "minify" hugo.IsProduction "shims" (dict "katex" "modules/katex/katex.js"))).RelPermalink -}}
 {{- end -}}
 {{- $mainScript := resources.Get "ts/main.ts" | js.Build (dict "minify" hugo.IsProduction "params" (dict "search" $searchScript.RelPermalink "katex" $katex)) -}}
 {{- if .Site.IsServer -}}

@@ -16,8 +16,9 @@ const modules = {
     '@swup/slide-theme/dist/SwupSlideTheme.js': 'SwupSlideTheme.js',
     'swup-morph-plugin/dist/SwupMorphPlugin.js': 'SwupMorphPlugin.js',
     'flexsearch/dist/flexsearch.bundle.js': 'flexsearch.js',
-    'katex/dist/katex.js': 'katex.js',
-    'katex/dist/katex.css': 'katex.css',
+    'katex/dist/katex.js': 'katex/katex.js',
+    'katex/dist/katex.css': 'katex/katex.css',
+    'katex/dist/fonts': 'katex/fonts',
     'katex/dist/contrib/auto-render.js': 'katex-render.js',
     'katex/dist/contrib/copy-tex.js': 'katex-copy.js',
     'normalize.css/normalize.css': 'normalize.css',
@@ -26,7 +27,9 @@ const modules = {
 }
 
 function copyFolderSync(from, to) {
-    fs.mkdirSync(to);
+    try {
+        fs.mkdirSync(to);
+    } catch (error) {}
     fs.readdirSync(from).forEach(element => {
         if (fs.lstatSync(path.join(from, element)).isFile()) {
             fs.copyFileSync(path.join(from, element), path.join(to, element));
