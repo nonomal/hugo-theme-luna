@@ -145,7 +145,7 @@ class Luna {
     // https://github.com/CaiJimmy/hugo-theme-stack/blob/master/assets/ts/gallery.ts
     // 相册插件
     initGallery() {
-        const figuresEl = Array.from(document.querySelectorAll('figure.gallery-image')) as HTMLElement[];
+        const figuresEl = Array.from(document.querySelectorAll('.typo figure.gallery-image')) as HTMLElement[];
         let currentGallery = [];
         if (figuresEl.length < 2) return false;
         for (const figure of figuresEl) {

@@ -27,5 +27,6 @@ $font: {{.Param "font"}};
 @import './_partial/_page_home';
 @import './_partial/_page_single';
 @import './_partial/_page_twitter';
+@import './_partial/_page_gallery';
 
 @import './custom.scss';

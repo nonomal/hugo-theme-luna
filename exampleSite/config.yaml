@@ -29,6 +29,7 @@ permalinks:
   # 文章链接的格式
   # Format of posts links
   posts: /:year/:month/:day/:slug.html # 2019/01/01/hello-world.html
+  pages: /:slug.html # about.html
 
 author:
   name: Ice-Hazymoon

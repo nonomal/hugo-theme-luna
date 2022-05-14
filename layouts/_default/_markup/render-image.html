@@ -4,7 +4,7 @@
 
 {{- $Alt := .PlainText | safeHTML -}}
 {{- if (urls.Parse (.Destination | safeURL)).Scheme -}}
-    <figure>
+    <figure class="gallery-image">
         <picture>
             <img
                 {{ if $lazyload }}data-{{ end }}src="{{- .Destination | safeURL -}}"
