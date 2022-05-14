@@ -9,7 +9,7 @@
     "background_color": "#ffffff",
     "display": "standalone",
     "scope": "/",
-    "start_url": "{{- or .Site.BaseURL "/" -}}",
+    "start_url": "{{- "/" | relLangURL -}}",
     "name": "{{- .Site.Title | safeHTML -}}",
     "short_name": "{{- .Site.Params.author | safeHTML -}}",
     "description": "{{- .Site.Title | safeHTML -}}",
