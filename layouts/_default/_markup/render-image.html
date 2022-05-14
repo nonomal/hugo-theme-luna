@@ -69,10 +69,10 @@
 
 
     <figure
-        {{- if $galleryImage -}}
+        {{ if $galleryImage }}
             class="gallery-image" style=" flex-grow: {{- div (mul $Image.Width 100) $Image.Height -}}; flex-basis:
             {{- div (mul $Image.Width 240) $Image.Height -}}px"
-        {{- end -}}
+        {{ end }}
     >
         <picture>
             {{- with $Srcset_Webp -}}<source {{ if $lazyload }}data-{{ end }}srcset="{{- . -}}" type="image/webp" />{{- end -}}
