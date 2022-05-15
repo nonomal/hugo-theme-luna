@@ -63,6 +63,7 @@ class Luna {
                 setTimeout(() => {
                     if (el.hasAttribute('data-zoomable')) {
                         el.setAttribute('data-zoom-src', el.currentSrc || el.getAttribute('src'));
+                        el.removeAttribute('srcset');
                         this.zoom.attach(el)
                     }
                 }, 500);
@@ -182,8 +183,14 @@ class Luna {
     }
     // 底部计时器
     initFooterTime() {
-        if (!document.getElementById('run-time')) return false;
-        setInterval(() => {
+        const el = document.getElementById('run-time');
+        if (!el) return false;
+        const runTimer = setInterval(() => {
+            if (document.querySelector('.goog-te-banner-frame')) {
+                el.classList.add('opacity-0');
+                clearInterval(runTimer);
+                return false;
+            };
             const startDate = new Date(window.__theme.creatTime);
             const time = new Date();
             const diff = time.getTime() - startDate.getTime();
