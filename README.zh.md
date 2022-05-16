@@ -17,6 +17,7 @@
 ## 特性
 
 - 使用 [Tailwindcss](https://tailwindcss.com) 构建，界面美观，SEO友好
+- 动态导入 JS 模块
 - 自定义主题颜色和字体
 - 轮播图
 - 丰富的[短代码](https://hugo-theme-luna.imiku.me/zh-cn/2022/05/02/shortcodes.html/)支持
@@ -169,6 +170,14 @@ console.log('加密代码块测试');
 在 [https://github.com/settings/tokens](https://github.com/settings/tokens) 创建一个用于部署的 Token，保存该 Token
 
 在 **github.com/{username}/{project}/settings/secrets/actions** 添加一个 `TOKEN` 字段，输入刚才生成的 token
+
+## 自定义
+
+[custom.ts](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/ts/custom.ts)
+[custom.scss](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/sass/custom.scss)
+[custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/head.html)
+[custom/footer.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/footer.html)
+[custom/script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/script.html)
 
 ## 开发
 

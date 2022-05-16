@@ -1,5 +1,5 @@
 {{- $public_cdn := cond .Site.IsServer "" .Site.Params.publicCDN -}}
-{{- $customScript := resources.Get .Site.Params.customScript.file | js.Build (dict "minify" hugo.IsProduction) -}}
+{{- $customScript := resources.Get "ts/custom.ts" | js.Build (dict "minify" hugo.IsProduction) -}}
 {{- if .Site.IsServer -}}
     <script type="text/javascript" src="{{- $customScript.RelPermalink -}}" {{- if .Site.Params.customScript.pjax -}}data-swup-reload-script{{- end -}}></script>
 {{- else -}}

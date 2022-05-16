@@ -1,5 +1,5 @@
-import rander from 'modules/katex-render';
-import 'modules/katex-copy';
+import rander from './modules/katex-render';
+import './modules/katex-copy';
 
 window.rednerKatex = () => {
     rander(document.body, {

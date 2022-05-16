@@ -1,9 +1,16 @@
 import * as params from '@params';
-import jump from "modules/jump.js";
-import mediumZoom from "modules/medium-zoom";
-import LazyLoad from "modules/lazyload";
-import ClipboardJS from "modules/clipboard";
+import jump from "jump.js";
+import mediumZoom from "medium-zoom";
+import LazyLoad from "lazyload";
+import ClipboardJS from "./modules/clipboard";
 import renderToc from "./toc";
+// pjax
+import Swup from 'swup';
+import SwupFadeTheme from 'swupFadeTheme';
+import SwupProgressPlugin from 'swupProgressPlugin';
+import SwupGaPlugin from 'swupGaPlugin';
+import SwupScriptsPlugin from 'swupScriptsPlugin';
+import SwupMorphPlugin from 'swupMorphPlugin';
 
 declare global {
     interface Window {
@@ -15,6 +22,7 @@ declare global {
             pjax: boolean,
             imageZoom: boolean,
             lazyload: boolean,
+            backtop: boolean,
             isServer: boolean,
             $version: string,
             autoDarkMode: boolean,
@@ -45,41 +53,21 @@ declare global {
 class Luna {
     _LazyLoad: any;
     zoom: any;
+    swup: any;
     jump: boolean;
     private clipboard: any;
     constructor() {
-        if (window.__theme.imageZoom) {
-            this.zoom = mediumZoom('[data-zoomable]:not([data-lazyload])', {
-                background: 'var(--color-zoom-bg)',
-            });
-        }
-        this._LazyLoad = new LazyLoad({
-            elements_selector: '[data-lazyload]',
-            class_loading: 'lazy-loading',
-            class_error: 'lazy-error',
-            class_loaded: 'lazy-loaded',
-            unobserve_entered: true,
-            callback_loaded: (el) => {
-                setTimeout(() => {
-                    if (el.hasAttribute('data-zoomable')) {
-                        el.setAttribute('data-zoom-src', el.currentSrc || el.getAttribute('src'));
-                        el.removeAttribute('srcset');
-                        this.zoom.attach(el)
-                    }
-                }, 500);
-            },
-            callback_error: (el) => {
-                const errorImageURL = window.__theme.assets.error_svg;
-                el.setAttribute("src", errorImageURL);
-                el.setAttribute("srcset", errorImageURL);
-                if (el.previousSibling.tagName === 'SOURCE') {
-                    el.previousSibling.setAttribute("src", errorImageURL);
-                    el.previousSibling.setAttribute("srcset", errorImageURL);
-                }
-            }
-        })
     }
     async init() {
+        // init pjax
+        this.initPjax();
+
+        // init lazyload
+        this.initLazyload();
+
+        // init zoom image
+        this.initZoom();
+
         // hugo encrypt
         this.hugoEncrypt();
 
@@ -112,6 +100,38 @@ class Luna {
 
         renderToc();
     }
+    initPjax() {
+        if (!window.__theme.pjax) return false;
+        const swup = new Swup({
+            cache: true,
+            plugins: [new SwupMorphPlugin({
+                containers: ['#i18nlist']
+            }), new SwupFadeTheme(), new SwupProgressPlugin(), new SwupScriptsPlugin({
+                optin: true,
+                // head: false,
+                // body: false
+            })].concat(window.__theme.googleAnalytics ? [new SwupGaPlugin()] : []),
+            animateHistoryBrowsing: true,
+            linkSelector:
+            'a[href^="' +
+            window.location.origin +
+            '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup])',
+        });
+        
+        this.swup = swup;
+        
+        swup.on('pageView', async function(n) {
+            await window.Luna.hugoEncrypt();
+            window.Luna.initSearch();
+            window.Luna.initActiveMenu();
+    
+            window.Luna.renderPost();
+        
+            if (!n && document.getElementById('back-top')) {
+                document.getElementById('back-top').click();
+            }
+        });
+    }
     renderPost() {
         if (window.rednerKatex) window.rednerKatex();
         this._LazyLoad.update();
@@ -120,6 +140,66 @@ class Luna {
         this.initCodeBlockCopy();
         this.initClipboard();
         renderToc();
+    }
+
+    initZoom() {
+        if (window.__theme.imageZoom) {
+            if (!window.__theme.lazyload) {
+                this.noLazyload(false);
+            }
+            this.zoom = mediumZoom('[data-zoomable]:not([data-lazyload])', {
+                background: 'var(--color-zoom-bg)',
+            });
+        }
+    }
+
+    initLazyload() {
+        if (window.__theme.lazyload) {
+            this._LazyLoad = new LazyLoad({
+                elements_selector: '[data-lazyload]',
+                class_loading: 'lazy-loading',
+                class_error: 'lazy-error',
+                class_loaded: 'lazy-loaded',
+                unobserve_entered: true,
+                callback_loaded: (el) => {
+                    if (window.__theme.imageZoom) {
+                        setTimeout(() => {
+                            if (el.hasAttribute('data-zoomable')) {
+                                el.setAttribute('src', el.currentSrc || el.getAttribute('src'));
+                                el.removeAttribute('srcset');
+                                this.zoom.attach(el)
+                            }
+                        }, 500);
+                    }
+                },
+                callback_error: (el) => {
+                    const errorImageURL = window.__theme.assets.error_svg;
+                    el.setAttribute("src", errorImageURL);
+                    el.setAttribute("srcset", errorImageURL);
+                    if (el.previousSibling.tagName === 'SOURCE') {
+                        el.previousSibling.setAttribute("src", errorImageURL);
+                        el.previousSibling.setAttribute("srcset", errorImageURL);
+                    }
+                }
+            })
+        } else {
+            this._LazyLoad = {
+                update: () => {
+                    if (window.__theme.imageZoom) {
+                        this.noLazyload(true);
+                    }
+                }
+            }
+        }
+    }
+
+    noLazyload(zoom: boolean) {
+        const images = Array.from(document.querySelectorAll('[data-zoomable]:not([data-lazyload])')) as HTMLImageElement[];
+        images.forEach(el => {
+            el.setAttribute('src', el.currentSrc || el.getAttribute('src'));
+            el.removeAttribute('srcset');
+            if (zoom) this.zoom.attach(el);
+        })
     }
 
     switchLanguage(url) {
@@ -208,7 +288,7 @@ class Luna {
     // 返回顶部
     initBackTop() {
         const el = <HTMLImageElement>document.getElementById('back-top');
-        if (!el) return false;
+        if (!window.__theme.backtop) return false;
         window.addEventListener('scroll', () => {
             const scrollH = Math.max(document.body.scrollHeight,document.documentElement.scrollHeight) - document.documentElement.clientHeight - 150;
             const css = 157 - (~~(document.documentElement.scrollTop / scrollH * 100) * 1.57);
@@ -288,7 +368,6 @@ class Luna {
             btn.setAttribute('data-clipboard-text', code);
         }
     }
-
     // clipboard
     initClipboard() {
         if (!document.querySelector('[data-clipboard-text]')) return false;
@@ -433,6 +512,9 @@ class Luna {
     // zoom
     updateZoom() {
         if (!window.__theme.imageZoom) return false;
+        if (!window.__theme.lazyload) {
+            this.noLazyload(true);
+        }
         this.zoom.detach();
         this.zoom.attach('[data-zoomable]:not([data-lazyload])');
     }

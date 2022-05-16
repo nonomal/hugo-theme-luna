@@ -17,6 +17,7 @@
 ## Introduction
 
 - Using [Tailwindcss](https://tailwindcss.com)
+- Dynamic import of JS modules
 - Custom Themes and Fonts
 - Carousel
 - Many [shortcodes](https://hugo-theme-luna.imiku.me/2022/05/02/shortcodes.html/)

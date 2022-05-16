@@ -1,4 +1,4 @@
-import FlexSearch from 'modules/flexsearch';
+import FlexSearch from './modules/flexsearch';
 
 // 搜索插件
 if (window.initSearch) {

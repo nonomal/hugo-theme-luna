@@ -4,10 +4,10 @@
             "files": ["*.html"],
             "options": {
                 "parser": "go-template"
-            }
+            },
+            "goTemplateBracketSpacing": true
         }
     ],
-    "goTemplateBracketSpacing": true,
     "plugins": ["prettier-plugin-tailwindcss"],
     "tabWidth": 4,
     "singleQuote": true,

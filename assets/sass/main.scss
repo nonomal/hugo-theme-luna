@@ -1,12 +1,13 @@
 $theme: {{.Param "themeColor"}};
 $font: {{.Param "font"}};
 
+@import 'modules/normalize';
+@import 'modules/katex';
+@import 'modules/eva-icons';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'normalize.css';
-@import 'katex/katex.css';
-@import 'eva-icons/eva-icons.css';
 @import './theme.scss';
 @import './typo.scss';
 

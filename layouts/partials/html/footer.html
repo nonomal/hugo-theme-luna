@@ -49,12 +49,6 @@
     {{- partial "scripts/main-script" . -}}
 
 
-    <!-- pjax.js -->
-    {{- if .Site.Params.pjax -}}
-        {{- partial "scripts/pjax" . -}}
-    {{- end -}}
-
-
     <!-- sw.js -->
     {{- if .Site.Params.pwa -}}
         {{- partial "scripts/pwa" . -}}

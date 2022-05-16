@@ -184,6 +184,8 @@ markup:
 
 # .Site.Params
 params:
+  dev: false
+
   # CDN 地址
   # CDN URL
   publicCDN: ""
@@ -215,13 +217,11 @@ params:
   # 网站字体
   # Site font
   font: '"Times New Roman", Times, "Heti Song", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  # 'Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'
 
   # 自定义脚本
-  # custom script
+  # ts/custom.ts
   customScript:
     enable: false
-    file: "custom.js" # assets/custom.js
     pjax: true # Auto-reload in pjax mode
 
   # 网站底部显示运行时间
@@ -284,11 +284,11 @@ params:
   # 开启图片放大功能
   # Image Zoom Plugin
   # see https://github.com/francoischalifour/medium-zoom
-  imageZoom: true
+  imageZoom: false
 
   # 图片懒加载
   # lazyload image
-  lazyload: true
+  lazyload: false
 
   # 启用谷歌翻译插件
   # enable google translate in footer
@@ -327,7 +327,7 @@ params:
 
   # 开启 Pjax 无刷新加载
   # Enable pjax with swup.js
-  pjax: true
+  pjax: false
 
   # 开启 PWA
   # use service worker
@@ -339,7 +339,7 @@ params:
 
   # 开启返回顶部按钮
   # backtop button
-  backtop: true
+  backtop: false
 
   # 默认文章封面图片
   # 图片必须位于 assets 文件夹

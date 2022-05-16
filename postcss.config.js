@@ -9,9 +9,6 @@ const isDev = process.env.HUGO_ENVIRONMENT !== 'production';
 module.exports = {
     modules: true,
     plugins: !isDev ? {
-        'postcss-import': {
-            path: [path.join(__dirname, '/node_modules'), path.join(__dirname, '/assets/modules')],
-        },
         tailwindcss: {
             config: path.join(__dirname, '/tailwind.config.js'),
         },
@@ -53,35 +50,10 @@ module.exports = {
                 }
             }]
         },
-        'postcss-url': {
-            url: 'copy',
-            useHash: true,
-            assetsPath: path.join(__dirname, '/static/assets'),
-            hashOptions: {
-                append: true
-            }
-        },
-        'postcss-replace-values': {
-            values: replaceVal
-        }
     }: {
-        'postcss-import': {
-            path: [path.join(__dirname, '/node_modules'), path.join(__dirname, '/assets/modules')],
-        },
         tailwindcss: {
             config: path.join(__dirname, '/tailwind.config.js'),
         },
         'postcss-easing-gradients': {},
-        'postcss-url': {
-            url: 'copy',
-            useHash: true,
-            assetsPath: path.join(__dirname, '/static/assets'),
-            hashOptions: {
-                append: true
-            }
-        },
-        'postcss-replace-values': {
-            values: replaceVal
-        }
     }
 }
