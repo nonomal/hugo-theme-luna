@@ -1,5 +1,5 @@
 {{- $public_cdn := cond .Site.IsServer "" .Site.Params.publicCDN -}}
-{{- $script := resources.Get "ts/translate-google.js" | js.Build (dict "minify" hugo.IsProduction) -}}
+{{- $script := resources.Get "translate-google.js" | js.Build (dict "minify" hugo.IsProduction) -}}
 
 {{- if .Site.IsServer -}}
     <script type="text/javascript" src="{{- $script.RelPermalink -}}" defer></script>
