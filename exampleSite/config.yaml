@@ -29,6 +29,7 @@ permalinks:
   # 文章链接的格式
   # Format of posts links
   posts: /:year/:month/:day/:slug.html # 2019/01/01/hello-world.html
+  pages: /:slug.html # about.html
 
 author:
   name: Ice-Hazymoon
@@ -146,21 +147,28 @@ languages:
     title: Ice-Hazymoon 的博客
     languageName: 中文
     params:
-      icon: "/images/flag/zh-cn.svg"
+      icon: "images/i18n/zh-cn.svg" # in assets folder
       twitter: 
         rsshub: "https://rsshub.rssforever.com"
         id: "Ice_Hazymoon"
         imageProcessing: true
+      github:
+        id: "Ice-Hazymoon"
+        minStars: 10
       license:
+        enabled: true
         name: "署名 - 非商业性使用 - 禁止演绎 4.0"
-        icon: "/images/Cc-by-nc-nd.svg"
+        icon: "Cc-by-nc-nd.svg" # in assets folder
         url: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"
+      notification:
+        enabled: true
+        file: "README.zh.md"
   en-us:
     contentDir: content/en-us
     title: Ice-Hazymoon's Blog
     languageName: English
     params:
-      icon: "/images/flag/en-us.svg"
+      icon: "images/i18n/en-us.svg" # in assets folder
 
 markup:
   highlight:
@@ -176,13 +184,45 @@ markup:
 
 # .Site.Params
 params:
+  dev: false
+
   # CDN 地址
   # CDN URL
-  publicPath: ""
+  publicCDN: ""
+
+  # 在首页顶部创建一个通知部分
+  # Create a notification section at the top of the home page
+  notification:
+    enabled: true
+    file: "README.md" # assets/README.md
+
+  # Rss 配置
+  # RSS configuration
+  rss:
+    # 如果为 false，你必须设置 Output Formats，请查看：https://gohugo.io/templates/output-formats#customizing-output-formats
+    # If false, you must set Output Formats, see: https://gohugo.io/templates/output-formats#customizing-output-formats
+    enabled: true
+    # 是否输出全文
+    # Output full text
+    fullText: true
+
+  # 如果为 false，你必须设置 Output Formats，请查看：https://gohugo.io/templates/output-formats#customizing-output-formats
+  # If false, you must set Output Formats, see: https://gohugo.io/templates/output-formats#customizing-output-formats
+  sitemap: true
 
   # 网站主题颜色
   # Site theme colors
   themeColor: "#dd6065"
+
+  # 网站字体
+  # Site font
+  font: '"Times New Roman", Times, "Heti Song", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+
+  # 自定义脚本
+  # ts/custom.ts
+  customScript:
+    enable: false
+    pjax: true # Auto-reload in pjax mode
 
   # 网站底部显示运行时间
   # Show site runtime
@@ -219,8 +259,9 @@ params:
   # 文章许可设置
   # license
   license:
+    enabled: true
     name: "CC BY-NC-ND 4.0"
-    icon: "/images/Cc-by-nc-nd.svg"
+    icon: "Cc-by-nc-nd.svg" # in assets folder
     url: "https://creativecommons.org/licenses/by-nc-nd/4.0"
 
   # 显示右上角 i18n 切换按钮
@@ -237,7 +278,7 @@ params:
   # tweet page
   twitter:
     rsshub: "https://rsshub.rssforever.com"
-    id: "elonmusk"
+    id: "GenshinImpact"
     imageProcessing: true
 
   # 开启图片放大功能
@@ -253,8 +294,17 @@ params:
   # enable google translate in footer
   googleTranslate: true
 
+  # 文章页显示最后修改时间
   # For outdated reminders
   lastmod: true
+
+  # 显示阅读时间
+  # show reading time
+  readingTime: true
+
+  # 显示文章字数
+  # show word count
+  wordCount: false
 
   # 开启文章内目录，可以在页面内单独设置
   # Show table of contents
@@ -326,4 +376,4 @@ params:
   description: "A simple, performance-first, SEO-friendly Hugo theme"
 
 build:
-  noJSConfigInAssets: false
+  noJSConfigInAssets: true

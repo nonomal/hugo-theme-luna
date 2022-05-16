@@ -3,22 +3,23 @@
 <h3 align="center"><i>A simple, performance-first, SEO-friendly Hugo theme</i></h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Hugo-0.97-green?style=for-the-badge&logo=hugo&logoColor=white" />
-  <img src="https://img.shields.io/github/workflow/status/Ice-Hazymoon/hugo-theme-luna/CI?style=for-the-badge&logo=github&logoColor=white" />
-  <img src="https://img.shields.io/github/license/Ice-Hazymoon/hugo-theme-luna?style=for-the-badge" />
+  <a href="https://github.com/gohugoio/hugo" target="_blank"><img src="https://img.shields.io/badge/Hugo-≥0.97-green?style=for-the-badge&logo=hugo&logoColor=white" /></a>
+  <a href="https://github.com/Ice-Hazymoon/hugo-theme-luna/actions/workflows/main.yml" target="_blank"><img src="https://img.shields.io/github/workflow/status/Ice-Hazymoon/hugo-theme-luna/CI?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/github/license/Ice-Hazymoon/hugo-theme-luna?style=for-the-badge" /></a>
 </p>
 
 ![Luna](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/luna.png)
 
 [👉 Example](https://hugo-theme-luna.imiku.me) | [中文文档](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/README.zh.md)
 
-![](https://img.shields.io/github/last-commit/Ice-Hazymoon/hugo-theme-luna?style=flat-square)
-![](https://img.shields.io/github/languages/code-size/Ice-Hazymoon/hugo-theme-luna?style=flat-square)
+![](https://img.shields.io/github/last-commit/Ice-Hazymoon/hugo-theme-luna?style=flat-square) ![](https://img.shields.io/github/languages/code-size/Ice-Hazymoon/hugo-theme-luna?style=flat-square)
 
 ## Introduction
 
 - Using [Tailwindcss](https://tailwindcss.com)
-- Custom Themes
+- Dynamic import of JS modules
+- Custom Themes and Fonts
+- Carousel
 - Many [shortcodes](https://hugo-theme-luna.imiku.me/2022/05/02/shortcodes.html/)
 - Dark mode
 - Image gallery
@@ -54,15 +55,37 @@ If you are using **Windows**, I recommend using [Scoop](https://scoop.sh/) to in
 scoop install hugo-extended
 ```
 
-### - Installation
+### - Install as git submodule
 
 ```bash
-git clone https://github.com/Ice-Hazymoon/hugo-theme-luna/ themes/hugo-theme-luna
+git submodule add https://github.com/Ice-Hazymoon/hugo-theme-luna themes/hugo-theme-luna
 cd themes/hugo-theme-luna
-npm install
+npm install --production
 ```
 
 There is a [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) file in the [`exampleSite`](https://github.com/Ice-Hazymoon/hugo-theme-luna/tree/main/exampleSite) directory, copy the file to your site directory and modify the contents.
+
+### - Update theme
+
+```bash
+git submodule update --remote
+```
+
+If the following error occurs.
+
+```
+fatal: Needed a single revision
+Unable to find current origin/master revision in submodule path 'themes/hugo-theme-luna'
+```
+
+Please add `branch = main` to the `.gitmodules` file
+
+```
+[submodule "themes/hugo-theme-luna"]
+	branch = main
+	path = themes/hugo-theme-luna
+	url = https://github.com/Ice-Hazymoon/hugo-theme-luna
+```
 
 ### - Configuration
 
@@ -78,11 +101,11 @@ You can find all available icons at [Eva icons](https://akveo.github.io/eva-icon
 
 You can set the post type to `type: status` to post a status
 
-You can modify your website icons by adjusting the [assets/icon.png](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/icon.png) file
+You can create your website icons by adjusting the [assets/icon.png](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/assets/icon.png) file
 
 ### - Comment
 
-You can add the HTML part of the comment in [comment.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/77c6007410a97315448119c224412f3929716ed2/layouts/partials/comment.html) and then add the script part in [custom-script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/layouts/partials/scripts/custom-script.html) or [custom-script-pjax.js](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/custom-script-pjax.js) / [custom-script.js](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/custom-script.js)
+You can add the HTML part of the comment in [comment.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/77c6007410a97315448119c224412f3929716ed2/layouts/partials/comment.html) and then add the js and css file links in [custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/layouts/partials/custom/head.html)
 
 ### - Shortcodes
 
@@ -148,6 +171,7 @@ Add a `TOKEN` field to **github.com/{username}/{project}/settings/secrets/action
 ```sh
 git clone https://github.com/Ice-Hazymoon/hugo-theme-luna/
 cd hugo-theme-luna
+npm install
 hugo server -s ./exampleSite -D --themesDir "../.."
 ```
 
@@ -175,7 +199,8 @@ hugo server -s ./exampleSite -D --themesDir "../.."
 - [hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even)
 - [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)
 - [hugo-encrypt](https://github.com/Izumiko/hugo-encrypt)
-- [shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Some shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Carousel component](https://codepen.io/onediv/details/VaQbrq)
 
 ## License
 

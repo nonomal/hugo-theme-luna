@@ -3,22 +3,23 @@
 <h3 align="center"><i>一个简约，性能优先，SEO 友好的 Hugo 主题</i></h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Hugo-0.97-green?style=for-the-badge&logo=hugo&logoColor=white" />
-  <img src="https://img.shields.io/github/workflow/status/Ice-Hazymoon/hugo-theme-luna/CI?style=for-the-badge&logo=github&logoColor=white" />
-  <img src="https://img.shields.io/github/license/Ice-Hazymoon/hugo-theme-luna?style=for-the-badge" />
+  <a href="https://github.com/gohugoio/hugo" target="_blank"><img src="https://img.shields.io/badge/Hugo-0.97-green?style=for-the-badge&logo=hugo&logoColor=white" /></a>
+  <a href="https://github.com/Ice-Hazymoon/hugo-theme-luna/actions/workflows/main.yml" target="_blank"><img src="https://img.shields.io/github/workflow/status/Ice-Hazymoon/hugo-theme-luna/CI?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/github/license/Ice-Hazymoon/hugo-theme-luna?style=for-the-badge" /></a>
 </p>
 
 ![Luna](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/luna.png)
 
 [👉在线预览](https://hugo-theme-luna.imiku.me/zh-cn) | [English](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/README.md)
 
-![](https://img.shields.io/github/last-commit/Ice-Hazymoon/hugo-theme-luna?style=flat-square)
-![](https://img.shields.io/github/languages/code-size/Ice-Hazymoon/hugo-theme-luna?style=flat-square)
+![](https://img.shields.io/github/last-commit/Ice-Hazymoon/hugo-theme-luna?style=flat-square) ![](https://img.shields.io/github/languages/code-size/Ice-Hazymoon/hugo-theme-luna?style=flat-square)
 
 ## 特性
 
 - 使用 [Tailwindcss](https://tailwindcss.com) 构建，界面美观，SEO友好
-- 自定义主题颜色
+- 动态导入 JS 模块
+- 自定义主题颜色和字体
+- 轮播图
 - 丰富的[短代码](https://hugo-theme-luna.imiku.me/zh-cn/2022/05/02/shortcodes.html/)支持
 - 夜间模式
 - 画廊模式
@@ -60,12 +61,34 @@ scoop install hugo-extended
 在 Hugo 根目录执行
 
 ```bash
-git clone https://github.com/Ice-Hazymoon/hugo-theme-luna/ themes/hugo-theme-luna
+git submodule add https://github.com/Ice-Hazymoon/hugo-theme-luna themes/hugo-theme-luna
 cd themes/hugo-theme-luna
-npm install
+npm install --production
 ```
 
 在主题 [`exampleSite`](https://github.com/Ice-Hazymoon/hugo-theme-luna/tree/main/exampleSite) 目录有一个 [`config.yaml`](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/config.yaml) 文件，将该文件复制到你的站点目录下并根据需求修改相关内容。
+
+### - 更新主题
+
+```bash
+git submodule update --remote
+```
+
+如果出现以下错误：
+
+```
+fatal: Needed a single revision
+Unable to find current origin/master revision in submodule path 'themes/hugo-theme-luna'
+```
+
+请在 `.gitmodules` 文件中添加 `branch = main`
+
+```
+[submodule "themes/hugo-theme-luna"]
+	branch = main
+	path = themes/hugo-theme-luna
+	url = https://github.com/Ice-Hazymoon/hugo-theme-luna
+```
 
 ### - 配置
 
@@ -81,11 +104,11 @@ npm install
 
 你可以设置文章类型为 `type: status` 来发表一篇想法
 
-你可以通过调整 [assets/icon.png](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/icon.png) 文件来修改你的网站图标
+你可以通过创建 [assets/icon.png](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/exampleSite/assets/icon.png) 文件来修改你的网站图标
 
 ### - 评论系统
 
-你可以在 [comment.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/77c6007410a97315448119c224412f3929716ed2/layouts/partials/comment.html) 添加评论系统的 HTML 部分，然后在 [custom-script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/layouts/partials/scripts/custom-script.html) 或者 [custom-script-pjax.js](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/custom-script-pjax.js) / [custom-script.js](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/assets/custom-script.js) 添加脚本的初始化部分
+你可以在 [comment.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/77c6007410a97315448119c224412f3929716ed2/layouts/partials/comment.html) 添加评论系统的 HTML 部分，然后在 [custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/main/layouts/partials/custom/head.html) 添加 css 和 js 资源
 
 ### - 短代码
 
@@ -115,6 +138,8 @@ console.log('加密代码块测试');
 ````
 
 ## 注意
+
+如果你所在的国家或地区无法访问 Twitter 或 GitHub，请不要使用这两个模板文件，否则会出现错误。
 
 博客内图片均使用了 Hugo 的 [Image Processing](https://gohugo.io/content-management/image-processing/) 功能，自动裁剪成合适的大小来优化页面加载速度，首次生成可能较为耗费时间。
 
@@ -146,11 +171,20 @@ console.log('加密代码块测试');
 
 在 **github.com/{username}/{project}/settings/secrets/actions** 添加一个 `TOKEN` 字段，输入刚才生成的 token
 
+## 自定义
+
+[custom.ts](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/ts/custom.ts)
+[custom.scss](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/sass/custom.scss)
+[custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/head.html)
+[custom/footer.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/footer.html)
+[custom/script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/script.html)
+
 ## 开发
 
 ```sh
 git clone https://github.com/Ice-Hazymoon/hugo-theme-luna/
 cd hugo-theme-luna
+npm install
 hugo server -s ./exampleSite -D --themesDir "../.."
 ```
 
@@ -179,6 +213,8 @@ hugo server -s ./exampleSite -D --themesDir "../.."
 - [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)
 - [hugo-encrypt](https://github.com/Izumiko/hugo-encrypt)
 - [shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Some shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
+- [Carousel component](https://codepen.io/onediv/details/VaQbrq)
 
 ## License
 

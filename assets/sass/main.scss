@@ -1,11 +1,15 @@
+/* prettier-ignore-start */
 $theme: {{.Param "themeColor"}};
+$font: {{.Param "font"}};
+/* prettier-ignore-end */
+
+@import 'modules/normalize';
+@import 'modules/katex';
+@import 'modules/eva-icons';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'normalize.css';
-@import 'katex/dist/katex.css';
-@import 'eva-icons/style/eva-icons.css';
 @import './theme.scss';
 @import './typo.scss';
 
@@ -26,3 +30,6 @@ $theme: {{.Param "themeColor"}};
 @import './_partial/_page_home';
 @import './_partial/_page_single';
 @import './_partial/_page_twitter';
+@import './_partial/_page_gallery';
+
+@import './custom.scss';

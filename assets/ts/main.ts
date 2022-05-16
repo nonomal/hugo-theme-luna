@@ -1,8 +1,16 @@
 import * as params from '@params';
-import jump from "modules/jump.js";
-import mediumZoom from "modules/medium-zoom";
-import LazyLoad from "modules/lazyload";
-import ClipboardJS from "modules/clipboard";
+import jump from "jump.js";
+import mediumZoom from "medium-zoom";
+import LazyLoad from "lazyload";
+import ClipboardJS from "./modules/clipboard";
+import renderToc from "./toc";
+// pjax
+import Swup from 'swup';
+import SwupFadeTheme from 'swupFadeTheme';
+import SwupProgressPlugin from 'swupProgressPlugin';
+import SwupGaPlugin from 'swupGaPlugin';
+import SwupScriptsPlugin from 'swupScriptsPlugin';
+import SwupMorphPlugin from 'swupMorphPlugin';
 
 declare global {
     interface Window {
@@ -14,13 +22,19 @@ declare global {
             pjax: boolean,
             imageZoom: boolean,
             lazyload: boolean,
+            backtop: boolean,
             isServer: boolean,
             $version: string,
             autoDarkMode: boolean,
+            googleAnalytics: boolean,
             lang: string,
             hugoEncrypt: {
                 wrongPasswordText: string,
                 userStorage: any,
+            },
+            assets: {
+                error_svg: string,
+                search_svg: string,
             },
             i18n: {
                 copySuccess: string,
@@ -39,43 +53,23 @@ declare global {
 class Luna {
     _LazyLoad: any;
     zoom: any;
+    swup: any;
     jump: boolean;
     private clipboard: any;
     constructor() {
-        if (window.__theme.imageZoom) {
-            this.zoom = mediumZoom('[data-zoomable]:not([data-lazyload])', {
-                background: 'var(--color-zoom-bg)',
-            });
-        }
-        this._LazyLoad = new LazyLoad({
-            elements_selector: '[data-lazyload]',
-            class_loading: 'lazy-loading',
-            class_error: 'lazy-error',
-            class_loaded: 'lazy-loaded',
-            unobserve_entered: true,
-            callback_loaded: (el) => {
-                setTimeout(() => {
-                    if (el.hasAttribute('data-zoomable')) {
-                        el.setAttribute('data-zoom-src', el.currentSrc || el.getAttribute('src'));
-                        this.zoom.attach(el)
-                    }
-                }, 500);
-            },
-            callback_error: (el) => {
-                console.log(el);
-                const errorImageURL = window.__theme.cdn + '/images/error.svg';
-                el.setAttribute("src", errorImageURL);
-                el.setAttribute("srcset", errorImageURL);
-                el.removeAttribute('data-lazyload-blur');
-            }
-        })
     }
     async init() {
+        // init pjax
+        this.initPjax();
+
+        // init lazyload
+        this.initLazyload();
+
+        // init zoom image
+        this.initZoom();
+
         // hugo encrypt
         this.hugoEncrypt();
-
-        // lazyload
-        this.updateLazyLoad();
 
         // katex
         this.initKatex();
@@ -92,6 +86,9 @@ class Luna {
         // 代码高亮插件
         this.initCodeBlockCopy();
 
+        // 复制插件
+        this.initClipboard();
+
         // 底部計時器
         this.initFooterTime();
 
@@ -100,29 +97,115 @@ class Luna {
 
         // 夜间模式
         this.initNightMode();
+
+        renderToc();
+    }
+    initPjax() {
+        if (!window.__theme.pjax) return false;
+        const swup = new Swup({
+            cache: true,
+            plugins: [new SwupMorphPlugin({
+                containers: ['#i18nlist']
+            }), new SwupFadeTheme(), new SwupProgressPlugin(), new SwupScriptsPlugin({
+                optin: true,
+                // head: false,
+                // body: false
+            })].concat(window.__theme.googleAnalytics ? [new SwupGaPlugin()] : []),
+            animateHistoryBrowsing: true,
+            linkSelector:
+            'a[href^="' +
+            window.location.origin +
+            '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup])',
+        });
+        
+        this.swup = swup;
+        
+        swup.on('pageView', async function(n) {
+            await window.Luna.hugoEncrypt();
+            window.Luna.initSearch();
+            window.Luna.initActiveMenu();
+    
+            window.Luna.renderPost();
+        
+            if (!n && document.getElementById('back-top')) {
+                document.getElementById('back-top').click();
+            }
+        });
     }
     renderPost() {
         if (window.rednerKatex) window.rednerKatex();
-        this.updateLazyLoad();
         this._LazyLoad.update();
         this.updateZoom();
         this.initGallery();
         this.initCodeBlockCopy();
+        this.initClipboard();
+        renderToc();
+    }
+
+    initZoom() {
+        if (window.__theme.imageZoom) {
+            if (!window.__theme.lazyload) {
+                this.noLazyload(false);
+            }
+            this.zoom = mediumZoom('[data-zoomable]:not([data-lazyload])', {
+                background: 'var(--color-zoom-bg)',
+            });
+        }
+    }
+
+    initLazyload() {
+        if (window.__theme.lazyload) {
+            this._LazyLoad = new LazyLoad({
+                elements_selector: '[data-lazyload]',
+                class_loading: 'lazy-loading',
+                class_error: 'lazy-error',
+                class_loaded: 'lazy-loaded',
+                unobserve_entered: true,
+                callback_loaded: (el) => {
+                    if (window.__theme.imageZoom) {
+                        setTimeout(() => {
+                            if (el.hasAttribute('data-zoomable')) {
+                                el.setAttribute('src', el.currentSrc || el.getAttribute('src'));
+                                el.removeAttribute('srcset');
+                                this.zoom.attach(el)
+                            }
+                        }, 500);
+                    }
+                },
+                callback_error: (el) => {
+                    const errorImageURL = window.__theme.assets.error_svg;
+                    el.setAttribute("src", errorImageURL);
+                    el.setAttribute("srcset", errorImageURL);
+                    if (el.previousSibling.tagName === 'SOURCE') {
+                        el.previousSibling.setAttribute("src", errorImageURL);
+                        el.previousSibling.setAttribute("srcset", errorImageURL);
+                    }
+                }
+            })
+        } else {
+            this._LazyLoad = {
+                update: () => {
+                    if (window.__theme.imageZoom) {
+                        this.noLazyload(true);
+                    }
+                }
+            }
+        }
+    }
+
+    noLazyload(zoom: boolean) {
+        const images = Array.from(document.querySelectorAll('[data-zoomable]:not([data-lazyload])')) as HTMLImageElement[];
+        images.forEach(el => {
+            el.setAttribute('src', el.currentSrc || el.getAttribute('src'));
+            el.removeAttribute('srcset');
+            if (zoom) this.zoom.attach(el);
+        })
     }
 
     switchLanguage(url) {
         window.location.href = url;
     }
-
-    // lazyload 插件
-    updateLazyLoad() {
-        const lazyload = Array.from(document.querySelectorAll('[data-lazyload]')) as HTMLElement[];
-        for (const item of lazyload) {
-            if (item.hasAttribute('src')) {
-                item.setAttribute('data-lazyload-blur', "")
-            }
-        }
-    }
+    
     // pjax 菜单激活插件
     initActiveMenu() {
         const activeMenu = document.querySelector('.link-exact-active')
@@ -143,9 +226,11 @@ class Luna {
     // https://github.com/CaiJimmy/hugo-theme-stack/blob/master/assets/ts/gallery.ts
     // 相册插件
     initGallery() {
-        const figuresEl = Array.from(document.querySelectorAll('figure.gallery-image')) as HTMLElement[];
+        const figuresEl = Array.from(document.querySelectorAll('.typo figure.gallery-image')) as HTMLElement[];
         let currentGallery = [];
+        if (figuresEl.length < 2) return false;
         for (const figure of figuresEl) {
+            if (figure.parentElement.classList.contains('gallery')) return false;
             if (!currentGallery.length) {
                 /// First iteration
                 currentGallery = [figure];
@@ -178,8 +263,14 @@ class Luna {
     }
     // 底部计时器
     initFooterTime() {
-        if (!document.getElementById('run-time')) return false;
-        setInterval(() => {
+        const el = document.getElementById('run-time');
+        if (!el) return false;
+        const runTimer = setInterval(() => {
+            if (document.querySelector('.goog-te-banner-frame')) {
+                el.remove();
+                clearInterval(runTimer);
+                return false;
+            };
             const startDate = new Date(window.__theme.creatTime);
             const time = new Date();
             const diff = time.getTime() - startDate.getTime();
@@ -197,7 +288,7 @@ class Luna {
     // 返回顶部
     initBackTop() {
         const el = <HTMLImageElement>document.getElementById('back-top');
-        if (!el) return false;
+        if (!window.__theme.backtop) return false;
         window.addEventListener('scroll', () => {
             const scrollH = Math.max(document.body.scrollHeight,document.documentElement.scrollHeight) - document.documentElement.clientHeight - 150;
             const css = 157 - (~~(document.documentElement.scrollTop / scrollH * 100) * 1.57);
@@ -271,12 +362,15 @@ class Luna {
             const lang = codeEl.getAttribute('data-lang');
             const code = el.querySelector('table td:nth-child(2) pre').textContent;
     
-            header.innerHTML = `<span>${lang}</span><i title="${window.__theme.i18n.copyCode}" class="eva eva-clipboard-outline"></i>`
+            header.innerHTML = `<div><span></span> <span></span> <span></span> ${lang}</div><i title="${window.__theme.i18n.copyCode}" class="eva eva-clipboard-outline"></i>`
             const btn = header.querySelector('i.eva');
             el.prepend(header);
             btn.setAttribute('data-clipboard-text', code);
         }
-
+    }
+    // clipboard
+    initClipboard() {
+        if (!document.querySelector('[data-clipboard-text]')) return false;
         if (this.clipboard) {
             this.clipboard.destroy();
         }
@@ -408,7 +502,7 @@ class Luna {
     initKatex() {
         if (params.katex) {
             const script = document.createElement('script');
-            script.src = `${window.__theme.cdn}${params.katex}`;
+            script.src = params.katex;
             document.body.appendChild(script);
             script.addEventListener('load', () => {
                 window.rednerKatex();
@@ -418,6 +512,9 @@ class Luna {
     // zoom
     updateZoom() {
         if (!window.__theme.imageZoom) return false;
+        if (!window.__theme.lazyload) {
+            this.noLazyload(true);
+        }
         this.zoom.detach();
         this.zoom.attach('[data-zoomable]:not([data-lazyload])');
     }

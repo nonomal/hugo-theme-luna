@@ -7,3 +7,5 @@ yarn.lock
 .tmp
 .hugo_build.lock
 yarn-error.log
+package-lock.json
+pnpm-lock.yaml

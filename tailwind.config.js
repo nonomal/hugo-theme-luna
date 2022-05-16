@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const { boxShadow } = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 const path = require('path');
@@ -28,7 +27,7 @@ module.exports = {
                 darkText: 'var(--color-dark-text)',
                 darkTextPlaceholder: 'var(--color-dark-text-placeholder)',
             },
-            boxShadow: _.assign(boxShadow, {
+            boxShadow: Object.assign(boxShadow, {
                 custom:
                     '8px 14px 38px rgba(39, 44, 49, 0.06), 1px 3px 8px rgba(39, 44, 49, 0.03);',
                 custom2: '-8px 14px 38px rgba(39, 44, 49, 0.06), -1px 3px 8px rgba(39, 44, 49, 0.03);'
