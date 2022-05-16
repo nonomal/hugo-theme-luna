@@ -267,7 +267,7 @@ class Luna {
         if (!el) return false;
         const runTimer = setInterval(() => {
             if (document.querySelector('.goog-te-banner-frame')) {
-                el.classList.add('opacity-0');
+                el.remove();
                 clearInterval(runTimer);
                 return false;
             };
