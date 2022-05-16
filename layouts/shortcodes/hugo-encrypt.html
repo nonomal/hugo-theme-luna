@@ -1,6 +1,7 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{- $randomID := delimit (shuffle (split (md5 now.Unix) "" )) "" -}}
 
+
 <hugo-encrypt id="r{{- $randomID -}}">
     {{- if .Get 0 -}}
         {{- $.Page.Store.Set "passphrase" (.Get 0) -}}

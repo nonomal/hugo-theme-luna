@@ -7,7 +7,7 @@
     "scripts": {
         "updateModules": "node ./updateModules.js",
         "generateCss": "postcss ./assets/sass/main.scss -o ./assets/main.scss",
-        "prettier": "npx prettier --write ./layouts/**/*.html"
+        "prettier": "npx prettier --write ./layouts/**/*.html ./assets/sass/**/*.scss"
     },
     "homepage": "https://github.com/Ice-Hazymoon/hugo-theme-luna",
     "bugs": {

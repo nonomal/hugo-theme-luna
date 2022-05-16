@@ -1,5 +1,7 @@
+/* prettier-ignore-start */
 $theme: {{.Param "themeColor"}};
 $font: {{.Param "font"}};
+/* prettier-ignore-end */
 
 @import 'modules/normalize';
 @import 'modules/katex';

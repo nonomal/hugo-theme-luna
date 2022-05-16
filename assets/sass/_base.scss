@@ -35,7 +35,7 @@ html {
 body {
     background-color: #f4f8fb;
     color: var(--color-text);
-    @apply overflow-hidden w-screen text-gray-700;
+    @apply w-screen overflow-hidden text-gray-700;
     @apply top-0 #{!important};
 }
 
@@ -59,7 +59,7 @@ body {
 textarea,
 input {
     &:disabled {
-        @apply bg-gray-100 dark:bg-transparent cursor-not-allowed;
+        @apply cursor-not-allowed bg-gray-100 dark:bg-transparent;
     }
 }
 
@@ -68,16 +68,12 @@ figure {
 }
 
 .lang-ja {
-    font-family: '-apple-system', BlinkMacSystemFont, 'Yu Gothic',
-        '游ゴシック', YuGothic, '游ゴシック体', 'Noto Sans Japanese',
-        'ヒラギノ角ゴ Pro W3', 'メイリオ',
-        'Hiragino Kaku Gothic ProN', 'MS PGothic', Osaka,
-        'sans-serif';
+    font-family: '-apple-system', BlinkMacSystemFont, 'Yu Gothic', '游ゴシック', YuGothic, '游ゴシック体', 'Noto Sans Japanese', 'ヒラギノ角ゴ Pro W3',
+        'メイリオ', 'Hiragino Kaku Gothic ProN', 'MS PGothic', Osaka, 'sans-serif';
 }
 
 .main {
-    box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
-        1px 3px 8px rgba(39, 44, 49, 0.03);
+    box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06), 1px 3px 8px rgba(39, 44, 49, 0.03);
     min-height: 100vh;
     nav {
         left: 200px;

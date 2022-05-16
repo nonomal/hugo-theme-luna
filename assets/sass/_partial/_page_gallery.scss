@@ -1,14 +1,9 @@
 .page-gallery {
     .gallery-image {
-        @apply relative rounded overflow-hidden mb-4;
+        @apply relative mb-4 overflow-hidden rounded;
         figcaption {
-            @apply absolute bottom-0 px-4 pt-8 pb-4 text-center text-lg pointer-events-none text-white w-full opacity-100 md:opacity-0 transition-opacity duration-300;
-            background-image: linear-gradient(
-                to bottom,
-                hsla(330, 0%, 0%, 0),
-                cubic-bezier(0.42, 0, 0.4, 1),
-                hsla(210, 0%, 0%, 0.3)
-              );
+            @apply pointer-events-none absolute bottom-0 w-full px-4 pt-8 pb-4 text-center text-lg text-white opacity-100 transition-opacity duration-300 md:opacity-0;
+            background-image: linear-gradient(to bottom, hsla(330, 0%, 0%, 0), cubic-bezier(0.42, 0, 0.4, 1), hsla(210, 0%, 0%, 0.3));
         }
         img {
             @apply w-full;

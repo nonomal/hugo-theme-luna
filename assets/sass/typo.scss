@@ -1,6 +1,6 @@
 // $font: PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Merriweather, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 
-html{
+html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
@@ -15,7 +15,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-input[type="search"]::-webkit-search-cancel-button{
+input[type='search']::-webkit-search-cancel-button {
     display: none;
 }
 
@@ -23,31 +23,31 @@ fieldset {
     min-inline-size: auto;
 }
 
-input{
+input {
     -webkit-appearance: none;
     border-radius: 0;
     outline: none;
     background-color: transparent;
 }
 
-[type="button"]{
+[type='button'] {
     -webkit-appearance: none;
 }
 
-a[target="_blank"] {
+a[target='_blank'] {
     cursor: alias;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
     font-family: 'Eva-Icons';
     vertical-align: text-top;
     @apply bg-transparent align-bottom;
     &:after {
-        content: "\ebb0";
+        content: '\ebb0';
     }
     &:checked {
         &:after {
-            content: "\ea69";
+            content: '\ea69';
         }
     }
 }
@@ -55,21 +55,22 @@ input[type="checkbox"] {
 .typo {
     font-size: 1.05rem;
     line-height: 1.9em;
-    
+
     ::-webkit-scrollbar {
-        @apply w-2 h-2;
+        @apply h-2 w-2;
     }
 
     ::-webkit-scrollbar-thumb {
         @apply rounded-full bg-gray-500 dark:bg-darkTextPlaceholder;
     }
 
-    b, strong {
+    b,
+    strong {
         font-weight: bold;
         // margin: 0;
         // padding: 0.15rem 0.25rem;
         // border-radius: 7.5px;
-        // background: 
+        // background:
         //     linear-gradient(
         //         104deg,
         //         rgba(255, 130, 130, 0) 0.9%,
@@ -87,25 +88,25 @@ input[type="checkbox"] {
         // text-shadow: -12px 12px 9.8px hsla(337deg, 100%, 75%, 0.7), 21px -18.1px 7.3px #fff, -18.1px -27.3px 30px #fff;
     }
 
-    a[target="_blank"]{
+    a[target='_blank'] {
         &::before {
-            content: "\eabe";
+            content: '\eabe';
             font-family: Eva-Icons;
             margin-right: 2px;
             vertical-align: bottom;
         }
     }
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
         font-family: 'Eva-Icons';
         vertical-align: text-top;
         @apply bg-transparent align-bottom;
         &:after {
-            content: "\ebb0";
+            content: '\ebb0';
         }
         &:checked {
             &:after {
-                content: "\ea69";
+                content: '\ea69';
             }
         }
     }
@@ -130,11 +131,16 @@ input[type="checkbox"] {
     }
     blockquote:not(.quote) {
         background-color: #f5f7f9;
-        @apply border-l-4 border-theme dark:bg-darkBgAccent my-4 p-5 ml-0 rounded-md;
+        @apply my-4 ml-0 rounded-md border-l-4 border-theme p-5 dark:bg-darkBgAccent;
         p {
-            @apply last:mb-0 first:mt-0;
+            @apply first:mt-0 last:mb-0;
         }
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             @apply mt-4;
         }
         blockquote {
@@ -143,26 +149,26 @@ input[type="checkbox"] {
     }
     details.accordion {
         summary::before {
-            content: "\ea70";
+            content: '\ea70';
             font-family: Eva-Icons;
         }
         &[open] {
             summary::before {
-                content: "\ea6c";
+                content: '\ea6c';
             }
         }
     }
     ul {
-        @apply pl-8 mb-5;
-        li{
-            @apply pl-1 list-disc;
+        @apply mb-5 pl-8;
+        li {
+            @apply list-disc pl-1;
         }
     }
-    
+
     ol {
-        @apply pl-8 mb-5;
-        li{
-            @apply pl-1 list-decimal;
+        @apply mb-5 pl-8;
+        li {
+            @apply list-decimal pl-1;
         }
     }
 
@@ -180,41 +186,39 @@ input[type="checkbox"] {
             }
         }
     }
-    
+
     p {
-        @apply leading-8 my-4;
+        @apply my-4 leading-8;
     }
 
     a:not(.link-card) {
-        @apply relative text-theme inline-block no-underline;
+        @apply relative inline-block text-theme no-underline;
         &:hover {
             @apply underline;
         }
     }
 
-
     pre {
-        font-family: Menlo, Monaco, Consolas, Andale Mono, lucida console,
-            Courier New, monospace;
-        @apply relative overflow-x-auto bg-gray-800 rounded text-sm p-4 my-4;
+        font-family: Menlo, Monaco, Consolas, Andale Mono, lucida console, Courier New, monospace;
+        @apply relative my-4 overflow-x-auto rounded bg-gray-800 p-4 text-sm;
 
-        code{
+        code {
             @apply bg-transparent p-0;
             &::after {
                 content: '';
-                @apply w-full h-11 bg-white;
+                @apply h-11 w-full bg-white;
             }
         }
     }
 
     .highlight {
-        @apply my-4 rounded overflow-hidden dark:border dark:border-darkBorder;
+        @apply my-4 overflow-hidden rounded dark:border dark:border-darkBorder;
         pre {
             @apply my-0 rounded-none bg-gray-800 dark:bg-transparent #{!important};
         }
         header {
             color: #8b949e;
-            @apply w-full bg-gray-800 dark:bg-transparent pt-2 px-4 flex justify-between items-center dark:border-b dark:border-darkBorder text-base dark:text-darkTextPlaceholder;
+            @apply flex w-full items-center justify-between bg-gray-800 px-4 pt-2 text-base dark:border-b dark:border-darkBorder dark:bg-transparent dark:text-darkTextPlaceholder;
             i {
                 @apply cursor-pointer;
             }
@@ -222,20 +226,20 @@ input[type="checkbox"] {
                 @apply bg-gray-800 dark:bg-transparent #{!important};
             }
             span {
-                @apply w-2.5 h-2.5 rounded-full mr-0.5 inline-block;
+                @apply mr-0.5 inline-block h-2.5 w-2.5 rounded-full;
                 &:nth-child(1) {
-                    @apply bg-red-400 ;
+                    @apply bg-red-400;
                 }
                 &:nth-child(2) {
-                    @apply bg-yellow-400 ;
+                    @apply bg-yellow-400;
                 }
                 &:nth-child(3) {
-                    @apply bg-green-400 mr-4;
+                    @apply mr-4 bg-green-400;
                 }
             }
         }
         table {
-            @apply max-h-96 block;
+            @apply block max-h-96;
 
             pre {
                 @apply p-0 py-4;
@@ -262,14 +266,14 @@ input[type="checkbox"] {
     }
 
     code {
-        font-family: Menlo, Monaco, Consolas, Andale Mono, lucida console,
-            Courier New, monospace;
-        @apply text-white dark:text-darkText bg-gray-700 px-1 py-1 rounded text-sm break-normal;
+        font-family: Menlo, Monaco, Consolas, Andale Mono, lucida console, Courier New, monospace;
+        @apply break-normal rounded bg-gray-700 px-1 py-1 text-sm text-white dark:text-darkText;
     }
 
-    img:not(.link-card-img), video {
+    img:not(.link-card-img),
+    video {
         border: 1px solid #f4f4f4;
-        @apply w-full rounded my-4 dark:border-darkBorder;
+        @apply my-4 w-full rounded dark:border-darkBorder;
     }
 
     h1,
@@ -278,7 +282,7 @@ input[type="checkbox"] {
     h4,
     h5,
     h6 {
-        @apply text-gray-800 dark:text-darkText mb-4 mt-8 font-bold;
+        @apply mb-4 mt-8 font-bold text-gray-800 dark:text-darkText;
         a {
             color: initial;
             &::before {
@@ -292,7 +296,7 @@ input[type="checkbox"] {
     }
 
     h2 {
-        @apply text-3xl border-b dark:border-darkBorder pb-2;
+        @apply border-b pb-2 text-3xl dark:border-darkBorder;
     }
 
     h3 {
@@ -317,20 +321,20 @@ input[type="checkbox"] {
         @apply font-bold;
         &::before {
             content: '#';
-            @apply w-5 text-gray-400 mr-2 italic font-bold;
+            @apply mr-2 w-5 font-bold italic text-gray-400;
         }
     }
 
     hr {
-        @apply my-16 w-3/4 mx-auto dark:border-darkBorder;
+        @apply my-16 mx-auto w-3/4 dark:border-darkBorder;
     }
 
     table {
         width: 100%;
         border-spacing: 0;
-        @apply my-8 text-center border-collapse max-w-full whitespace-nowrap overflow-auto rounded;
+        @apply my-8 max-w-full border-collapse overflow-auto whitespace-nowrap rounded text-center;
         &::-webkit-scrollbar {
-            @apply w-2 h-2;
+            @apply h-2 w-2;
         }
         thead {
             @apply border-b border-gray-300 dark:border-gray-600;
@@ -339,14 +343,14 @@ input[type="checkbox"] {
             @apply font-bold;
         }
         tr {
-            @apply border-b border-gray-300 dark:border-gray-600 last:border-0;
+            @apply border-b border-gray-300 last:border-0 dark:border-gray-600;
         }
         th,
         td {
-            @apply overflow-hidden text-ellipsis text-left p-3 border-collapse text-base;
+            @apply border-collapse overflow-hidden text-ellipsis p-3 text-left text-base;
         }
         @media (max-width: 600px) {
-            @apply block table-auto w-full overflow-auto whitespace-nowrap;
+            @apply block w-full table-auto overflow-auto whitespace-nowrap;
         }
     }
 
@@ -361,7 +365,7 @@ input[type="checkbox"] {
     //     margin: 0;
     //     padding: 0.15rem 0.25rem;
     //     border-radius: 7.5px;
-    //     background: 
+    //     background:
     //         linear-gradient(
     //             104deg,
     //             rgba(255, 130, 130, 0) 0.9%,

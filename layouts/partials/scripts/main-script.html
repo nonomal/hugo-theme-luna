@@ -6,7 +6,7 @@
     {{- $katex = print $public_cdn (resources.Get "ts/katex.ts" | js.Build (dict "minify" hugo.IsProduction "shims" (dict "katex" "ts/modules/katex.js"))).RelPermalink -}}
 {{- end -}}
 
-{{- $scratch := newScratch  -}}
+{{- $scratch := newScratch -}}
 {{- $scratch.SetInMap "jsModules" "lazyload" (cond .Site.Params.lazyload "ts/modules/lazyload.js" "ts/_.ts") -}}
 {{- $scratch.SetInMap "jsModules" "medium-zoom" (cond .Site.Params.imageZoom "ts/modules/medium-zoom.js" "ts/_.ts") -}}
 {{- $scratch.SetInMap "jsModules" "jump.js" (cond .Site.Params.backtop "ts/modules/jump.js" "ts/_.ts") -}}
@@ -22,5 +22,6 @@
 {{- if .Site.IsServer -}}
     <script type="text/javascript" src="{{- $mainScript.RelPermalink -}}" defer></script>
 {{- else -}}
-    {{- $mainScript := $mainScript | fingerprint -}}    <script type="text/javascript" src="{{- print $public_cdn $mainScript.RelPermalink -}}" defer integrity="{{- $mainScript.Data.Integrity -}}"></script>
+    {{- $mainScript := $mainScript | fingerprint -}}
+    <script type="text/javascript" src="{{- print $public_cdn $mainScript.RelPermalink -}}" defer integrity="{{- $mainScript.Data.Integrity -}}"></script>
 {{- end -}}

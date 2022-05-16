@@ -4,10 +4,10 @@
             @apply dark:shadow-none;
         }
         .dot {
-            margin-left: - (0.5rem/2) - (0.25rem/2);
+            margin-left: -(0.5rem/2) - (0.25rem/2);
             &::before {
                 content: attr(data-date) '';
-                @apply absolute h-full top-0 flex items-center -ml-10 text-sm;
+                @apply absolute top-0 -ml-10 flex h-full items-center text-sm;
                 @media (max-width: 400px) {
                     @apply -ml-12;
                 }
@@ -19,7 +19,7 @@
         a {
             &::before {
                 content: '';
-                @apply absolute w-0 h-0 border-solid border-white dark:border-darkBgAccent ml-0 mr-0 transition duration-300 ease-[ease];
+                @apply absolute ml-0 mr-0 h-0 w-0 border-solid border-white transition duration-300 ease-[ease] dark:border-darkBgAccent;
                 border-width: 5px 5px 5px 0;
                 border-left-color: transparent !important;
                 border-top-color: transparent !important;
