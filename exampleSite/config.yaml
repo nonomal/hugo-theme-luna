@@ -284,11 +284,11 @@ params:
   # 开启图片放大功能
   # Image Zoom Plugin
   # see https://github.com/francoischalifour/medium-zoom
-  imageZoom: false
+  imageZoom: true
 
   # 图片懒加载
   # lazyload image
-  lazyload: false
+  lazyload: true
 
   # 启用谷歌翻译插件
   # enable google translate in footer
@@ -327,7 +327,7 @@ params:
 
   # 开启 Pjax 无刷新加载
   # Enable pjax with swup.js
-  pjax: false
+  pjax: true
 
   # 开启 PWA
   # use service worker
@@ -339,7 +339,7 @@ params:
 
   # 开启返回顶部按钮
   # backtop button
-  backtop: false
+  backtop: true
 
   # 默认文章封面图片
   # 图片必须位于 assets 文件夹
