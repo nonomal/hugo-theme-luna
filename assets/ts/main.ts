@@ -61,49 +61,34 @@ class Luna {
     constructor() {
     }
     async init() {
-        // init pjax
         this.initPjax();
 
-        // init lazyload
         this.initLazyload();
 
-        // init zoom image
         this.initZoom();
 
-        // hugo encrypt
         this.hugoEncrypt();
 
-        // katex
         this.initKatex();
 
-        // 導航欄
         this.initActiveMenu();
 
-        // 搜索插件
         this.initSearch()
 
-        // 相冊插件
         this.initGallery();
 
-        // 代码高亮插件
         this.initCodeBlockCopy();
 
-        // 复制插件
         this.initClipboard();
 
-        // 底部計時器
         this.initFooterTime();
 
-        // 返回頂部
         this.initBackTop();
 
-        // 夜间模式
         this.initNightMode();
 
-        // 文章导航
         renderToc();
 
-        // 优化中文排版
         this.pangu();
     }
     initPjax() {
@@ -220,7 +205,7 @@ class Luna {
         window.location.href = url;
     }
     
-    // pjax 菜单激活插件
+    // Toggle navigation in pjax mode
     initActiveMenu() {
         const activeMenu = document.querySelector('.link-exact-active')
         if (activeMenu) activeMenu.classList.remove('link-exact-active');
@@ -228,7 +213,6 @@ class Luna {
         if (currentMenu) currentMenu.classList.add('link-exact-active');
     }
 
-    // 搜索插件
     async initSearch() {
         const node = document.getElementById('search-input');
         if (!node) return false;
@@ -240,7 +224,6 @@ class Luna {
     }
 
     // https://github.com/CaiJimmy/hugo-theme-stack/blob/master/assets/ts/gallery.ts
-    // 相册插件
     initGallery() {
         const figuresEl = Array.from(document.querySelectorAll('.typo figure.gallery-image')) as HTMLElement[];
         let currentGallery = [];
@@ -278,7 +261,6 @@ class Luna {
         }
     }
 
-    // 底部计时器
     initFooterTime() {
         const el = document.getElementById('run-time');
         if (!el) return false;
@@ -303,7 +285,6 @@ class Luna {
         }, 1000);
     }
 
-    // 返回顶部
     initBackTop() {
         const el = <HTMLImageElement>document.getElementById('back-top');
         if (!window.__theme.backtop) return false;
@@ -370,7 +351,6 @@ class Luna {
         );
     }
 
-    // 代码块复制
     initCodeBlockCopy() {
         const highlightList = Array.from(document.querySelectorAll('.highlight'));
         for (let index = 0; index < highlightList.length; index++) {
@@ -388,7 +368,6 @@ class Luna {
         }
     }
 
-    // clipboard
     initClipboard() {
         if (!document.querySelector('[data-clipboard-text]')) return false;
         if (this.clipboard) {
@@ -405,7 +384,6 @@ class Luna {
         });
     }
 
-    // 夜间模式
     initNightMode() {
         const el = document.querySelector('.dark-mode-switch');
         const _i = el.querySelector('i');
@@ -440,7 +418,6 @@ class Luna {
         })
     }
 
-    // 文章加密
     async hugoEncrypt() {
         const storageKey = location.pathname + "password";
         const encryption_blocks = Array.from(document.querySelectorAll("hugo-encrypt"));
@@ -521,7 +498,6 @@ class Luna {
         }
     }
 
-    // katex
     initKatex() {
         if (params.katex) {
             const script = document.createElement('script');
@@ -533,7 +509,6 @@ class Luna {
         }
     }
 
-    // zoom
     updateZoom() {
         if (!window.__theme.imageZoom) return false;
         if (!window.__theme.lazyload) {

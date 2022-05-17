@@ -44,13 +44,11 @@ body {
     color: #fff;
 }
 
-// 滚动条
 ::-webkit-scrollbar {
     width: 6px;
     height: 10px;
 }
 
-/*滑块*/
 ::-webkit-scrollbar-thumb {
     background-color: var(--theme);
     @apply rounded-full;
