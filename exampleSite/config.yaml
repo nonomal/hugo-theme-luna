@@ -294,6 +294,10 @@ params:
   # enable google translate in footer
   googleTranslate: true
 
+  # 优化中文排版，请参考：https://github.com/vinta/pangu.js
+  # Optimize Chinese typography, see: https://github.com/vinta/pangu.js
+  pangu: true
+
   # 文章页显示最后修改时间
   # For outdated reminders
   lastmod: true

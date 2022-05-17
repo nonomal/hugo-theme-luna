@@ -19,6 +19,7 @@ const modules = {
     'swup-morph-plugin/dist/SwupMorphPlugin.js': `${js_modules_path}swupMorphPlugin.js`,
     'flexsearch/dist/flexsearch.bundle.js': `${js_modules_path}flexsearch.js`,
     'katex/dist/katex.js': `${js_modules_path}katex.js`,
+    'pangu/dist/browser/pangu.js': `${js_modules_path}pangu.js`,
     'katex/dist/katex.css': `${css_modules_path}katex.css`,
     'katex/dist/fonts': `${static_path}fonts`,
     'katex/dist/contrib/auto-render.js': `${js_modules_path}katex-render.js`,

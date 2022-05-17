@@ -1,5 +1,6 @@
 import * as params from '@params';
 import jump from "jump.js";
+import pangu from "pangu";
 import mediumZoom from "medium-zoom";
 import LazyLoad from "lazyload";
 import ClipboardJS from "./modules/clipboard";
@@ -23,6 +24,7 @@ declare global {
             imageZoom: boolean,
             lazyload: boolean,
             backtop: boolean,
+            pangu: boolean,
             isServer: boolean,
             $version: string,
             autoDarkMode: boolean,
@@ -98,7 +100,11 @@ class Luna {
         // 夜间模式
         this.initNightMode();
 
+        // 文章导航
         renderToc();
+
+        // 优化中文排版
+        this.pangu();
     }
     initPjax() {
         if (!window.__theme.pjax) return false;
@@ -132,6 +138,7 @@ class Luna {
             }
         });
     }
+
     renderPost() {
         if (window.rednerKatex) window.rednerKatex();
         this._LazyLoad.update();
@@ -140,6 +147,13 @@ class Luna {
         this.initCodeBlockCopy();
         this.initClipboard();
         renderToc();
+        this.pangu();
+    }
+
+    pangu() {
+        if (window.__theme.pangu) {
+            pangu.spacingElementById('swup');
+        }
     }
 
     initZoom() {
@@ -213,6 +227,7 @@ class Luna {
         const currentMenu = document.querySelector(`[data-active-link="${window.location.pathname.replace(/\/$/, '')}/"]`);
         if (currentMenu) currentMenu.classList.add('link-exact-active');
     }
+
     // 搜索插件
     async initSearch() {
         const node = document.getElementById('search-input');
@@ -223,6 +238,7 @@ class Luna {
             document.body.appendChild(script);
         }
     }
+
     // https://github.com/CaiJimmy/hugo-theme-stack/blob/master/assets/ts/gallery.ts
     // 相册插件
     initGallery() {
@@ -261,6 +277,7 @@ class Luna {
             }
         }
     }
+
     // 底部计时器
     initFooterTime() {
         const el = document.getElementById('run-time');
@@ -285,6 +302,7 @@ class Luna {
             document.getElementById('run-time-s').innerText = (~~(second)).toString();
         }, 1000);
     }
+
     // 返回顶部
     initBackTop() {
         const el = <HTMLImageElement>document.getElementById('back-top');
@@ -351,6 +369,7 @@ class Luna {
             }
         );
     }
+
     // 代码块复制
     initCodeBlockCopy() {
         const highlightList = Array.from(document.querySelectorAll('.highlight'));
@@ -368,6 +387,7 @@ class Luna {
             btn.setAttribute('data-clipboard-text', code);
         }
     }
+
     // clipboard
     initClipboard() {
         if (!document.querySelector('[data-clipboard-text]')) return false;
@@ -384,6 +404,7 @@ class Luna {
             console.error('Trigger:', e.trigger);
         });
     }
+
     // 夜间模式
     initNightMode() {
         const el = document.querySelector('.dark-mode-switch');
@@ -418,6 +439,7 @@ class Luna {
             }
         })
     }
+
     // 文章加密
     async hugoEncrypt() {
         const storageKey = location.pathname + "password";
@@ -498,6 +520,7 @@ class Luna {
 			}
         }
     }
+
     // katex
     initKatex() {
         if (params.katex) {
@@ -509,6 +532,7 @@ class Luna {
             })
         }
     }
+
     // zoom
     updateZoom() {
         if (!window.__theme.imageZoom) return false;
@@ -518,7 +542,6 @@ class Luna {
         this.zoom.detach();
         this.zoom.attach('[data-zoomable]:not([data-lazyload])');
     }
-    updateI18n() {}
 }
 
 window.addEventListener('load', async () => {
