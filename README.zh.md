@@ -202,19 +202,17 @@ hugo server -s ./exampleSite -D --themesDir "../.."
 
 ### - 页面截图
 
-| <p align="center">首页</p> ![首页](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059552132.png)                     | <p align="center">首页（夜间模式）</p> ![首页（夜间模式）](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059730757.png) |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| <p align="center">标签页</p> ![标签页](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651060185422.png)                 | <p align="center">搜索页</p> ![搜索页](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059518653.png)                     |
-| <p align="center">归档页</p> ![归档页](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059387460.png)                 | <p align="center">友情链接页</p> ![友情链接页](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059430110.png)             |
-| <p align="center">Twitter 动态页</p> ![Twitter 动态页](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059453997.png) | <p align="center">GitHub</p> ![GitHub 页](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059484292.png)                  |
-| <p align="center">文章加密</p> ![文章加密](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651060168715.png)             | <p align="center">相册排版</p> ![相册排版](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screely-1651059672459.png)                 |
+<p align="center">首页</p> ![Home](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-home.png)                             | <p align="center">首页 (夜间模式)</p> ![Home(dark)](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-home-dark.png)         |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <p align="center">归档页</p> ![Archives](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-archives.png)                     | <p align="center">友情链接</p> ![Links](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-links.png)                   |
+| <p align="center">Twitter</p> ![Twitter](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-twitter.png)                       | <p align="center">GitHub</p> ![GitHub](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-github.png)                 |
+| <p align="center">搜索页</p> ![Search](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-search.png) | <p align="center">画廊页</p> ![Gallery](https://github.com/Ice-Hazymoon/hugo-theme-luna/raw/main/screenshots/screen-gallery.png) |
 
 ## 致谢
 
 - [hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even)
 - [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)
 - [hugo-encrypt](https://github.com/Izumiko/hugo-encrypt)
-- [shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
 - [Some shortcodes](https://guanqr.com/tech/website/hugo-shortcodes-customization)
 - [Carousel component](https://codepen.io/onediv/details/VaQbrq)
 
