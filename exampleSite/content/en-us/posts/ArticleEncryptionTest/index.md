@@ -27,7 +27,7 @@ console.log('some codes');
 
 test content
 
-![Night city](test.jpg)
+![Night city](https://unsplash.it/1920/1080/?random=1)
 
 ```js
 console.log('some codes');

@@ -3,7 +3,7 @@
 
 {{- if eq .Type "posts" -}}
     <article
-        class="article group relative mb-10 overflow-hidden rounded border bg-white transition duration-300 ease-[ease] dark:border-darkBorder dark:bg-darkBgAccent sm:border-transparent sm:hover:border-gray-200 sm:hover:shadow-none md:mb-16"
+        class="article group relative mb-10 overflow-hidden rounded border bg-white transition duration-300 ease-[ease] dark:border-darkBorder dark:bg-darkBgAccent sm:border-transparent sm:hover:border-gray-200 sm:dark:hover:border-gray-600 sm:hover:shadow-none md:mb-16"
     >
         {{- $hasCover := or (.Site.Params.defaultFeaturedImage) (.Params.featured_image) -}}
         {{- if $hasCover -}}
@@ -90,12 +90,12 @@
             </a>
 
             <div class="block border-t px-5 pt-5 dark:border-darkBorder sm:hidden">
-                <a href="{{- .RelPermalink -}}" class="text-2xl font-bold line-clamp-2 group-hover:text-theme md:line-clamp-3">{{- .Title -}}</a>
+                <a href="{{- .RelPermalink -}}" class="text-2xl font-bold line-clamp-2 group-hover:text-theme md:line-clamp-3 transition">{{- .Title -}}</a>
                 {{- with $Summary -}}<div class="mt-4 mb-1 line-clamp-2" title="{{- . -}} ...">{{ . }} <span>...</span></div>{{- end -}}
             </div>
         {{- else -}}
             <a href="{{- .RelPermalink -}}" class="block px-5 pt-5 dark:border-darkBorder">
-                <div class="text-2xl font-bold line-clamp-2 group-hover:text-theme md:line-clamp-3">{{- .Title -}}</div>
+                <div class="text-2xl font-bold line-clamp-2 group-hover:text-theme md:line-clamp-3 transition">{{- .Title -}}</div>
                 {{- with $Summary -}}<div class="mt-4 mb-1 line-clamp-2" title="{{- . -}} ...">{{ . }} <span>...</span></div>{{- end -}}
             </a>
         {{- end -}}
@@ -159,7 +159,7 @@
     </article>
 {{- else -}}
     <article
-        class="article group relative mb-10 overflow-hidden rounded border bg-white transition duration-300 ease-[ease] dark:border-darkBorder dark:bg-darkBgAccent sm:border-transparent sm:hover:border-gray-200 sm:hover:shadow-none md:mb-16"
+        class="article group relative mb-10 overflow-hidden rounded border bg-white transition duration-300 ease-[ease] dark:border-darkBorder dark:bg-darkBgAccent sm:border-transparent sm:hover:border-gray-200 sm:dark:hover:border-gray-600 sm:hover:shadow-none md:mb-16"
     >
         <a href="{{- .RelPermalink -}}" class="relative flex p-5">
             <div class="mr-6 flex items-center text-5xl text-theme opacity-50 dark:opacity-80">

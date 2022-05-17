@@ -166,6 +166,14 @@ Create a Token for deployment at [https://github.com/settings/tokens](https://gi
 
 Add a `TOKEN` field to **github.com/{username}/{project}/settings/secrets/actions** and enter the token you just generated
 
+## Custom
+
+- [custom.ts](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/ts/custom.ts)
+- [custom.scss](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/sass/custom.scss)
+- [custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/head.html)
+- [custom/footer.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/footer.html)
+- [custom/script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/script.html)
+
 ## Development
 
 ```sh

@@ -15,7 +15,7 @@ summary: "Hugo 文章加密测试"
 
 test content
 
-![加密图片测试](test.jpg)
+![加密图片测试](https://unsplash.it/1920/1080/?random=1)
 
 ```js
 console.log('加密代码块测试');

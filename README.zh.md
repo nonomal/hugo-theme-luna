@@ -173,11 +173,13 @@ console.log('加密代码块测试');
 
 ## 自定义
 
-[custom.ts](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/ts/custom.ts)
-[custom.scss](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/sass/custom.scss)
-[custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/head.html)
-[custom/footer.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/footer.html)
-[custom/script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/script.html)
+如果你需要自定义主题，我建议你更改以下文件，而不是直接修改主题
+
+- [custom.ts](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/ts/custom.ts)
+- [custom.scss](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/assets/sass/custom.scss)
+- [custom/head.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/head.html)
+- [custom/footer.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/footer.html)
+- [custom/script.html](https://github.com/Ice-Hazymoon/hugo-theme-luna/blob/layouts/partials/custom/script.html)
 
 ## 开发
 
